@@ -5,7 +5,8 @@ import Header from "./components/Header";
 import About from "./components/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
-import Contact from "./components/contacts/Contacts";
+import Contact from "./components/Contacts";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </>
   );
 }

@@ -6,8 +6,8 @@ const Navbar = () => {
     return (
         <nav className="w-full fixed px-5 lg:px-8 xl:px-10 py-2 flex items-center justify-between z-50 bg-white bg-opacity-50 shadow-sm">
             
-            <a href="#top" className="text-lg font-bold">
-                <Image src={assets.logo} className='min-w-50 w-50 h-auto mr-10 cursor-pointer transition-smooth' alt='logo'/>
+            <a href="#top" className="inline-block">
+                <Image src={assets.logo} className='min-w-50 w-50 h-auto cursor-pointer transition-smooth' alt='logo'/>
             </a>
             
             <ul className="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-2">
