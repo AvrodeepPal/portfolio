@@ -5,10 +5,10 @@ import React from 'react';
 const Tile = ({ name, image }) => {
   return (
     <div
-      className="flex-shrink-0 m-4 overflow-hidden rounded-xl backdrop-blur-md 
-        w-48 h-48 border border-black/15 transition-transform transform hover:-translate-y-1"
+      className="flex-shrink-0 m-3 overflow-hidden rounded-xl backdrop-blur-md 
+        w-40 h-40 border border-black/15 transition-transform transform hover:-translate-y-2"
       style={{
-        boxShadow: '5px 5px 0 #fdd017',
+        boxShadow: '4px 4px 0 #fdd017',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#ffffee';
@@ -17,18 +17,18 @@ const Tile = ({ name, image }) => {
         e.currentTarget.style.backgroundColor = 'transparent';
       }}
     >
-      <div className="pt-6 px-6 flex items-center justify-center">
+      <div className="pt-4 px-4 flex items-center justify-center">
         <Image
           src={image}
           alt={name}
-          width={80}
-          height={80}
-          className="w-20 h-20 object-contain"
+          width={64}
+          height={64}
+          className="w-16 h-16 object-contain"
         />
       </div>
 
-      <div className="text-center px-4 pb-4 mt-4">
-        <span className="block text-black font-semibold text-md tracking-wide">
+      <div className="text-center px-4 pb-4 mt-2">
+        <span className="block text-black font-semibold text-sm tracking-wide">
           {name}
         </span>
       </div>

@@ -21,6 +21,8 @@ import npm from './npm.svg';
 import jupyter from './jupyter.svg';
 import vercel from './vercel.svg';
 import netlify from './netlify.svg';
+import streamlit from './streamlit.svg';
+import supabase from './supabase.svg';
 
 // 1. Programming Languages
 export const coding = [
@@ -28,8 +30,8 @@ export const coding = [
   { name: 'C++', image: cpp },
   { name: 'Java', image: java },
   { name: 'Python', image: python },
-  { name: 'JavaScript', image: javascript },
-  { name: 'TypeScript', image: typescript }
+  { name: 'JavaScript', image: javascript }
+  // { name: 'TypeScript', image: typescript }
 ];
 
 // 2. Web Development
@@ -38,12 +40,13 @@ export const webdev = [
   { name: 'CSS', image: css },
   { name: 'React.js', image: reactjs },
   { name: 'Tailwind CSS', image: tailwind },
-  { name: 'Vue.js', image: vue },
-  { name: 'Express.js', image: express },
-  { name: 'Next.js', image: nextjs },
+  // { name: 'Vue.js', image: vue },
+  // { name: 'Express.js', image: express },
   { name: 'Node.js', image: node },
-  { name: 'MongoDB', image: mongodb },
-  { name: 'Material UI', image: materialui }
+  { name: 'Next.js', image: nextjs },
+  { name: 'Supabase', image: supabase }
+  // { name: 'MongoDB', image: mongodb },
+  // { name: 'Material UI', image: materialui }
 ];
 
 // 3. Tools
@@ -58,5 +61,6 @@ export const tools = [
 // 4. Technologies/Platforms
 export const tech = [
   { name: 'Vercel', image: vercel },
-  { name: 'Netlify', image: netlify }
+  // { name: 'Netlify', image: netlify }
+  { name: 'Streamlit', image: streamlit }
 ];

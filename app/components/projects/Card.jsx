@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Card = ({ title, image, description, lang, live }) => {
+const Card = ({ title, image, description, lang, isLive, link }) => {
   return (
     <div
       className="flex flex-col items-center justify-center p-6 rounded-xl overflow-hidden
@@ -26,7 +26,7 @@ const Card = ({ title, image, description, lang, live }) => {
           alt={title}
           fill
           className="object-cover rounded-lg"
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 768px) 800vw, 33vw"
         />
       </div>
 
@@ -47,12 +47,12 @@ const Card = ({ title, image, description, lang, live }) => {
 
       <div className="w-full flex justify-center">
         <a
-          href={live}
+          href={link}
           target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-2 bg-yellow-400 text-white font-medium rounded-lg hover:bg-yellow-500 transition"
+          className="px-6 py-2 text-white text-xl font-medium rounded-lg
+            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition"
         >
-          Live Demo
+        {isLive === 0 ? 'Code' : 'Live'}
         </a>
       </div>
     </div>

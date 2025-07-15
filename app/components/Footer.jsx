@@ -4,15 +4,7 @@ import { assets } from '@/app/assets/home/assets';
 
 export default function Footer() {
   return (
-    <footer className="w-full py-8 px-4 flex flex-col items-center text-center border-t border-gray-200">
-
-      <a href="#top" className="flex items-center mb-4 text-2xl font-semibold text-gray-900">
-        <Image
-          src={assets.logo}
-          alt="Logo"
-          className="min-w-50 w-50 h-auto cursor-pointer transition-smooth"
-        />
-      </a>
+    <footer className="w-full py-7 px-4 flex flex-col items-center text-center border-t border-gray-200">
 
       <h6 className="text-sm text-gray-600 mb-4">
         © 2025. Made with{' '}

@@ -4,21 +4,24 @@ import { assets } from '../assets/home/assets';
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-white-50 w-full px-[12%] py-16 scroll-mt-20">
-      
+    <section id="contact" className="w-full px-[12%] py-20 scroll-mt-0 bg-white">
       <div className="max-w-7xl mx-auto">
+        {/* Header Text */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="text-base font-semibold uppercase tracking-wide text-[#fdd017]">Contact</p>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">Get in Touch</h2>
           <p className="text-xl text-gray-600">I'd love to hear from you! Let’s create something great together.</p>
         </div>
 
+        {/* Main Grid */}
         <div className="grid md:grid-cols-2 gap-12 items-stretch">
+          {/* Left Column: Contact Info */}
           <div className="pr-6">
             <p className="text-lg text-gray-600 mb-12">
               Reach out to me for collaboration, freelancing, or any inquiries. I’m always open to meaningful conversations.
             </p>
 
+            {/* Address */}
             <div className="flex items-start mb-8">
               <div className="flex h-10 w-10 items-center justify-center rounded bg-[#fdd017] text-white">
                 <Image src={assets.location} alt="location" width={20} height={20} />
@@ -30,6 +33,7 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Phone */}
             <div className="flex items-start mb-8">
               <div className="flex h-10 w-10 items-center justify-center rounded bg-[#fdd017] text-white">
                 <Image src={assets.calling} alt="phone" width={20} height={20} />
@@ -40,6 +44,7 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Email */}
             <div className="flex items-start">
               <div className="flex h-10 w-10 items-center justify-center rounded bg-[#fdd017] text-white">
                 <Image src={assets.email} alt="email" width={20} height={20} />
@@ -51,48 +56,55 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="flex flex-wrap bg-white rounded-lg p-6 md:p-12 shadow">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Any message for me?</h2>
-            <form className="space-y-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#fdd017]"
-                required
-              />
+          {/* Right Column: Form with Skewed Cards */}
+          <div className="relative">
+            {/* Skewed Back Card */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ffe31f] to-[#ff1e1e] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl z-0"></div>
 
-              <div className="flex flex-col xl:flex-row gap-4">
+            {/* Front Form Card */}
+            <div className="relative z-10 bg-[#fffccf] rounded-3xl p-6 md:p-10 shadow-xl">
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">Any message for me?</h2>
+              <form className="space-y-6">
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="flex-1 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#fdd017]"
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]"
                   required
                 />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  className="flex-1 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#fdd017]"
-                />
-              </div>
 
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Write your message..."
-                className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#fdd017]"
-                required
-              ></textarea>
+                <div className="flex flex-col xl:flex-row gap-4">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="flex-1 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    className="flex-1 rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                className="w-full bg-[#fdd017] text-white px-6 py-3 font-medium rounded-md hover:bg-yellow-500 transition"
-              >
-                Send Message
-              </button>
-            </form>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Write your message..."
+                  className="w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]"
+                  required
+                ></textarea>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#ff1e1e] text-white px-6 py-3 font-semibold rounded-md hover:bg-red-600 transition"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

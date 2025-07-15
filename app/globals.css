@@ -18,3 +18,36 @@
         background-position: 100% 50%;
     }
 }
+
+@layer utilities {
+    @keyframes gradientChange {
+        0% {
+            background-position: 0%
+        }
+
+        50% {
+            background-position: 100%
+        }
+
+        100% {
+            background-position: 0%
+        }
+    }
+
+    .gradient {
+        background: linear-gradient(90deg, yellow, red);
+        background-size: 200% 200%;
+    }
+
+    .element-to-rotate {
+        animation: gradientChange 3s ease infinite;
+    }
+}
+
+.theme-toggle__expand {
+    transition: transform 0.3s ease;
+  }
+  .theme-toggle:hover .theme-toggle__expand {
+    transform: rotate(20deg);
+  }
+  

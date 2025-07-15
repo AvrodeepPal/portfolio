@@ -1,18 +1,18 @@
 'use client';
 
 import Navbar from "./components/Navbar";
-import Header from "./components/Header";
 import About from "./components/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/Contacts";
 import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Header />
+      <Hero />
       <About />
       <Skills />
       <Projects />
