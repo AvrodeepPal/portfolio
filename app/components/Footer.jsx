@@ -2,11 +2,11 @@
 import Image from 'next/image';
 import { assets } from '@/app/assets/home/assets';
 
-export default function Footer() {
+export default function Footer({ isDark }) {
   return (
-    <footer className="w-full py-7 px-4 flex flex-col items-center text-center border-t border-gray-200">
+    <footer className={`w-full py-7 px-4 flex flex-col items-center text-center border-t ${isDark ? 'bg-[#171717] border-gray-700' : 'bg-white border-gray-200'}`}>
 
-      <h6 className="text-sm text-gray-600 mb-4">
+      <h6 className={`text-sm ${isDark ? 'text-[#ffffff]' : 'text-gray-600'} mb-4`}>
         © 2025. Made with{' '}
         <Image
           src={assets.heart}
@@ -24,7 +24,7 @@ export default function Footer() {
             href="https://github.com/AvrodeepPal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-black transition"
+            className={`${isDark ? 'text-gray-400 hover:text-[#ffffff]' : 'text-gray-500 hover:text-black'} transition`}
           >
             <Image src={assets.github} alt="GitHub" width={20} height={20} />
           </a>
@@ -34,7 +34,7 @@ export default function Footer() {
             href="https://linkedin.com/in/avrodeeppal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-700 transition"
+            className={`${isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-500 hover:text-blue-700'} transition`}
           >
             <Image src={assets.linkedin} alt="LinkedIn" width={20} height={20} />
           </a>

@@ -9,14 +9,15 @@ import TrueFocus from "./effects/TrueFocus";
 import ShinyText from "./effects/ShinyText";
 
 const COLORS_TOP = ["#fdd700", "#ffc72c", "#fbb034", "#ffac1c"];
+const COLORS_TOP_DARK = ["#333333", "#444444", "#555555", "#666666"];
 const STAR_COLORS = ["#ff0000", "#ff4d00", "#ff9900", "#ffe660"];
 
-const Hero = () => {
-  const color = useMotionValue(COLORS_TOP[0]);
+const Hero = ({ isDark }) => {
+  const color = useMotionValue(isDark ? COLORS_TOP_DARK[0] : COLORS_TOP[0]);
   const starColor = useMotionValue(STAR_COLORS[0]);
 
   useEffect(() => {
-    animate(color, COLORS_TOP, {
+    animate(color, isDark ? COLORS_TOP_DARK : COLORS_TOP, {
       ease: "easeInOut",
       duration: 10,
       repeat: Infinity,
@@ -29,21 +30,21 @@ const Hero = () => {
       repeat: Infinity,
       repeatType: "mirror",
     });
-  }, []);
+  }, [isDark]);
 
-  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #ffffff 60%, ${color})`;
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, ${isDark ? '#171717' : '#ffffff'} 60%, ${color})`;
   const border = useMotionTemplate`1px solid ${color}`;
   const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
 
   return (
     <motion.section
       style={{ backgroundImage }}
-      className="relative grid h-screen place-content-center overflow-hidden bg-white px-4 py-24 text-gray-800"
+      className={`relative grid h-screen place-content-center overflow-hidden ${isDark ? 'bg-[#171717]' : 'bg-white'} px-4 py-24 ${isDark ? 'text-[#ffffff]' : 'text-gray-800'}`}
       role="main"
       aria-label="Hero Section"
     >
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center gap-6 max-w-4xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center justify-center text-top gap-6 max-w-4xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,12 +59,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-4xl sm:text-6xl font-bold text-gray-900"
+          className={`text-4xl sm:text-6xl font-bold ${isDark ? 'text-[#ffffff]' : 'text-gray-900'}`}
         >
           I'm{" "}
           <span
             style={{
-              WebkitTextStroke: "0.5px #000",
+              WebkitTextStroke: isDark ? "0.5px #ffffff" : "0.5px #000",
             }}
           >
             <ShinyText 
@@ -83,11 +84,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-2xl sm:text-3xl font-medium text-gray-800 flex flex-wrap justify-center items-center gap-2"
+          className={`text-2xl sm:text-3xl font-medium ${isDark ? 'text-[#ffffff]' : 'text-gray-800'} flex flex-wrap justify-center items-center gap-2`}
         >
-          My focus remains on{" "}
+          My focus sharpens around{" "}
           <TrueFocus
-            sentence={["Data Science", "Web Development"]}
+            sentence={[" Data Science ", " Web Development "]}
             blurAmount={4}
             borderColor="#fdd700"
             glowColor="rgba(253, 215, 0, 0.6)"
@@ -101,7 +102,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className="text-base sm:text-lg text-gray-600 mt-2"
+          className={`text-base sm:text-lg ${isDark ? 'text-[#ffffff]' : 'text-gray-600'} mt-2`}
         >
           Welcome to my Portfolio!
         </motion.p>
@@ -123,7 +124,7 @@ const Hero = () => {
                 "_blank"
               )
             }
-            className="flex items-center gap-2 px-6 py-2 bg-white text-black border rounded-lg font-medium transition-colors"
+            className={`flex items-center gap-2 px-6 py-2 ${isDark ? 'bg-[#171717] text-[#ffffff]' : 'bg-white text-black'} border rounded-lg font-medium transition-colors`}
           >
             Open CV <FiArrowRight />
           </motion.button>

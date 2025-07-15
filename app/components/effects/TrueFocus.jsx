@@ -9,6 +9,7 @@ const TrueFocus = ({
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
   showAnd = false,
+  isDark = false,
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -39,7 +40,7 @@ const TrueFocus = ({
         <React.Fragment key={index}>
           <motion.span
             className={`inline-block font-semibold transition-all duration-300 ${
-              index === currentWordIndex ? "text-[#fdd700]" : "text-gray-600"
+              index === currentWordIndex ? "text-[#fdd700]" : `${isDark ? 'text-gray-400' : 'text-white-600'}`
             }`}
             style={{
               filter: index === currentWordIndex ? "blur(0px)" : `blur(${blurAmount}px)`,
@@ -61,7 +62,7 @@ const TrueFocus = ({
             {word}
           </motion.span>
           {showAnd && index === words.length - 2 && (
-            <span className="text-gray-800 mx-1">and</span>
+            <span className={`${isDark ? 'text-[#ffffff]' : 'text-white-800'} mx-1`}>and</span>
           )}
         </React.Fragment>
       ))}

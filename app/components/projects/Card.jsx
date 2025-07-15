@@ -2,12 +2,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Card = ({ title, image, description, lang, isLive, link }) => {
+const Card = ({ title, image, description, lang, isLive, link, isDark }) => {
   return (
     <div
-      className="flex flex-col items-center justify-center p-6 rounded-xl overflow-hidden
-        border border-black/15 transition-transform hover:scale-[1.02]
-        bg-white backdrop-blur-sm w-full min-w-[25rem]"
+      className={`flex flex-col items-center justify-center p-6 rounded-xl overflow-hidden
+        ${isDark ? 'border-gray-600' : 'border-black/15'} border transition-transform hover:scale-[1.02]
+        ${isDark ? 'bg-[#171717]' : 'bg-white'} backdrop-blur-sm w-full min-w-[25rem]`}
       style={{
         boxShadow: 'none',
       }}
@@ -18,7 +18,7 @@ const Card = ({ title, image, description, lang, isLive, link }) => {
         e.currentTarget.style.boxShadow = 'none';
       }}
     >
-      <h3 className="text-xl font-semibold text-left w-full mb-4">{title}</h3>
+      <h3 className={`text-xl font-semibold text-left w-full mb-4 ${isDark ? 'text-[#ffffff]' : 'text-black'}`}>{title}</h3>
 
       <div className="w-full h-52 md:h-64 relative mb-4">
         <Image
@@ -30,7 +30,7 @@ const Card = ({ title, image, description, lang, isLive, link }) => {
         />
       </div>
 
-      <p className="text-gray-700 text-sm mb-4 w-full text-left leading-relaxed">
+      <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} text-sm mb-4 w-full text-left leading-relaxed`}>
         {description}
       </p>
 
@@ -38,7 +38,7 @@ const Card = ({ title, image, description, lang, isLive, link }) => {
         {lang.map((tech, index) => (
           <span
             key={index}
-            className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold"
+            className={`${isDark ? 'bg-yellow-600 text-yellow-100' : 'bg-yellow-100 text-yellow-800'} px-3 py-1 rounded-full text-xs font-semibold`}
           >
             {tech}
           </span>
@@ -49,8 +49,8 @@ const Card = ({ title, image, description, lang, isLive, link }) => {
         <a
           href={link}
           target="_blank"
-          className="px-6 py-2 text-white text-xl font-medium rounded-lg
-            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition"
+          className={`px-6 py-2 ${isDark ? 'text-[#ffffff]' : 'text-white'} text-xl font-medium rounded-lg
+            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition`}
         >
         {isLive === 0 ? 'Code' : 'Live'}
         </a>
