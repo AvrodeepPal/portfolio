@@ -5,16 +5,14 @@ const TrueFocus = ({
   sentence,
   blurAmount = 3,
   borderColor = "#fdd700",
-  glowColor = "rgba(253, 215, 0, 0.6)",
+  glowColor = "rgba(255, 225, 20, 0.6)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
   showAnd = false,
-  isDark = false,
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Handle both string and array inputs
   const words = Array.isArray(sentence) ? sentence : sentence.split(" ");
 
   useEffect(() => {
@@ -40,7 +38,7 @@ const TrueFocus = ({
         <React.Fragment key={index}>
           <motion.span
             className={`inline-block font-semibold transition-all duration-300 ${
-              index === currentWordIndex ? "text-[#fdd700]" : `${isDark ? 'text-gray-400' : 'text-white-600'}`
+              index === currentWordIndex ? "text-[#fdd700]" : "text-fg/60"
             }`}
             style={{
               filter: index === currentWordIndex ? "blur(0px)" : `blur(${blurAmount}px)`,
@@ -62,7 +60,7 @@ const TrueFocus = ({
             {word}
           </motion.span>
           {showAnd && index === words.length - 2 && (
-            <span className={`${isDark ? 'text-[#ffffff]' : 'text-white-800'} mx-1`}>and</span>
+            <span className="text-fg mx-1">and</span>
           )}
         </React.Fragment>
       ))}

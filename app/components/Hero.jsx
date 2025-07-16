@@ -32,14 +32,12 @@ const Hero = ({ isDark }) => {
     });
   }, [isDark]);
 
-  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, ${isDark ? '#171717' : '#ffffff'} 60%, ${color})`;
-  const border = useMotionTemplate`1px solid ${color}`;
-  const boxShadow = useMotionTemplate`0px 4px 24px ${color}`;
+  const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, var(--bg) 60%, ${color})`;
 
   return (
     <motion.section
       style={{ backgroundImage }}
-      className={`relative grid h-screen place-content-center overflow-hidden ${isDark ? 'bg-[#171717]' : 'bg-white'} px-4 py-24 ${isDark ? 'text-[#ffffff]' : 'text-gray-800'}`}
+      className="relative grid h-screen place-content-center overflow-hidden bg-bg px-4 py-24 text-fg"
       role="main"
       aria-label="Hero Section"
     >
@@ -59,7 +57,7 @@ const Hero = ({ isDark }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className={`text-4xl sm:text-6xl font-bold ${isDark ? 'text-[#ffffff]' : 'text-gray-900'}`}
+          className="text-4xl sm:text-6xl font-bold text-fg"
         >
           I'm{" "}
           <span
@@ -84,7 +82,7 @@ const Hero = ({ isDark }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className={`text-2xl sm:text-3xl font-medium ${isDark ? 'text-[#ffffff]' : 'text-gray-800'} flex flex-wrap justify-center items-center gap-2`}
+          className="text-2xl sm:text-3xl font-medium text-fg flex flex-wrap justify-center items-center gap-2"
         >
           My focus sharpens around{" "}
           <TrueFocus
@@ -102,7 +100,7 @@ const Hero = ({ isDark }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className={`text-base sm:text-lg ${isDark ? 'text-[#ffffff]' : 'text-gray-600'} mt-2`}
+          className="text-base sm:text-lg text-fg/80 mt-2"
         >
           Welcome to my Portfolio!
         </motion.p>
@@ -117,14 +115,19 @@ const Hero = ({ isDark }) => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{ border, boxShadow }}
             onClick={() =>
               window.open(
                 "https://drive.google.com/file/d/1biiOnfbyn7DnGQesvgodBLi3PhMoXwoM/view?usp=sharing",
                 "_blank"
               )
             }
-            className={`flex items-center gap-2 px-6 py-2 ${isDark ? 'bg-[#171717] text-[#ffffff]' : 'bg-white text-black'} border rounded-lg font-medium transition-colors`}
+            className={`rounded-2xl border-2 border-dashed px-6 py-3 font-semibold uppercase transition-all duration-300 flex items-center gap-2 cursor-pointer
+              ${isDark 
+                ? 'border-white bg-bg text-fg hover:shadow-[-4px_4px_4px_white]' 
+                : 'border-black bg-bg text-fg hover:shadow-[-4px_4px_4px_black]'
+              } 
+              hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md 
+              active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none`}
           >
             Open CV <FiArrowRight />
           </motion.button>

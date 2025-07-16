@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+/* CSS Variables for Theme */
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --card: #f9f9f9;
+  --accent: #2563eb;
+  --nav-bg: rgba(255, 255, 255, 0.5);
+  --nav-hover: #374151;
+  --border: #e5e7eb;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --text-muted: #6b7280;
+}
+
+.dark {
+  --bg: #171717;
+  --fg: #ffffff;
+  --card: #1e1e1e;
+  --accent: #3b82f6;
+  --nav-bg: rgba(23, 23, 23, 0.5);
+  --nav-hover: #d1d5db;
+  --border: #374151;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --text-muted: #9ca3af;
+}
+
 .animated-background {
     background-size: 400%;
 
@@ -42,12 +67,40 @@
     .element-to-rotate {
         animation: gradientChange 3s ease infinite;
     }
+
+    .nav-bg {
+        background-color: var(--nav-bg);
+    }
+
+    .nav-hover:hover {
+        color: var(--nav-hover);
+    }
+
+    .bg-bg {
+        background-color: var(--bg);
+    }
+
+    .bg-card {
+        background-color: var(--card);
+    }
+
+    .text-fg {
+        color: var(--fg);
+    }
+
+    .text-muted {
+        color: var(--text-muted);
+    }
+
+    .border-border {
+        border-color: var(--border);
+    }
 }
 
 .theme-toggle__expand {
-    transition: transform 0.3s ease;
-  }
-  .theme-toggle:hover .theme-toggle__expand {
+    transition: transform 0.5s ease;
+}
+
+.theme-toggle:hover .theme-toggle__expand {
     transform: rotate(20deg);
-  }
-  
+}

@@ -2,12 +2,13 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Card = ({ title, image, description, lang, isLive, link, isDark }) => {
+const Card = ({ title, image, description, lang, isLive, code, live }) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center p-6 rounded-xl overflow-hidden
-        ${isDark ? 'border-gray-600' : 'border-black/15'} border transition-transform hover:scale-[1.02]
-        ${isDark ? 'bg-[#171717]' : 'bg-white'} backdrop-blur-sm w-full min-w-[25rem]`}
+      className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(0,0,0,0.2))] p-6 rounded-xl shadow-lg
+        flex flex-col items-center justify-center overflow-hidden
+        border-border border transition-transform hover:scale-[1.02]
+        w-full min-w-[25rem]"
       style={{
         boxShadow: 'none',
       }}
@@ -18,7 +19,7 @@ const Card = ({ title, image, description, lang, isLive, link, isDark }) => {
         e.currentTarget.style.boxShadow = 'none';
       }}
     >
-      <h3 className={`text-xl font-semibold text-left w-full mb-4 ${isDark ? 'text-[#ffffff]' : 'text-black'}`}>{title}</h3>
+      <h3 className="text-xl font-semibold text-left w-full mb-4 text-fg">{title}</h3>
 
       <div className="w-full h-52 md:h-64 relative mb-4">
         <Image
@@ -30,7 +31,7 @@ const Card = ({ title, image, description, lang, isLive, link, isDark }) => {
         />
       </div>
 
-      <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} text-sm mb-4 w-full text-left leading-relaxed`}>
+      <p className="text-fg/70 text-sm mb-4 w-full text-left leading-relaxed">
         {description}
       </p>
 
@@ -38,22 +39,33 @@ const Card = ({ title, image, description, lang, isLive, link, isDark }) => {
         {lang.map((tech, index) => (
           <span
             key={index}
-            className={`${isDark ? 'bg-yellow-600 text-yellow-100' : 'bg-yellow-100 text-yellow-800'} px-3 py-1 rounded-full text-xs font-semibold`}
+            className="bg-yellow-100 text-yellow-800 dark:bg-yellow-600 dark:text-yellow-100 px-3 py-1 rounded-full text-xs font-semibold"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center gap-4">
         <a
-          href={link}
+          href={code}
           target="_blank"
-          className={`px-6 py-2 ${isDark ? 'text-[#ffffff]' : 'text-white'} text-xl font-medium rounded-lg
-            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition`}
+          className="px-6 py-2 text-white text-xl font-medium rounded-lg
+            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition"
         >
-        {isLive === 0 ? 'Code' : 'Live'}
+          Code
         </a>
+        
+        {isLive === 1 && (
+          <a
+            href={live}
+            target="_blank"
+            className="px-6 py-2 text-white text-xl font-medium rounded-lg
+              focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition"
+          >
+            Live
+          </a>
+        )}
       </div>
     </div>
   );

@@ -52,14 +52,14 @@ export default function Contact({ isDark }) {
   };
 
   return (
-    <section id="contact" className={`w-full px-[12%] py-20 scroll-mt-0 ${isDark ? 'bg-[#171717]' : 'bg-white'}`}>
+    <section id="contact" className="w-full px-[12%] py-20 scroll-mt-0 bg-bg">
       <div className="max-w-7xl mx-auto">
         {/* Toast Notification */}
         {showToast && (
           <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
             toastType === 'success' 
-              ? 'bg-green-500 text-white' 
-              : 'bg-red-500 text-white'
+              ? 'bg-toast-success text-white' 
+              : 'bg-toast-error text-white'
           }`}>
             <div className="flex items-center justify-between">
               <span className="font-medium">{result}</span>
@@ -76,15 +76,15 @@ export default function Contact({ isDark }) {
         {/* Header Text */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="text-base font-semibold uppercase tracking-wide text-[#fdd017]">Contact</p>
-          <h2 className={`text-3xl sm:text-5xl font-bold tracking-tight ${isDark ? 'text-[#ffffff]' : 'text-gray-900'} mb-4`}>Get in Touch</h2>
-          <p className={`text-xl ${isDark ? 'text-[#ffffff]' : 'text-gray-600'}`}>I'd love to hear from you! Let's create something great together.</p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-fg mb-4">Get in Touch</h2>
+          <p className="text-xl text-fg/80">I'd love to hear from you! Let's create something great together.</p>
         </div>
 
         {/* Main Grid */}
         <div className="grid md:grid-cols-2 gap-12 items-stretch">
           {/* Left Column: Contact Info */}
           <div className="pr-6">
-            <p className={`text-lg ${isDark ? 'text-[#ffffff]' : 'text-gray-600'} mb-12`}>
+            <p className="text-lg text-fg/80 mb-12">
               Reach out to me for collaboration, freelancing, or any inquiries. I'm always open to meaningful conversations.
             </p>
 
@@ -94,9 +94,9 @@ export default function Contact({ isDark }) {
                 <Image src={assets.location} alt="location" width={20} height={20} />
               </div>
               <div className="ml-4">
-                <h3 className={`text-lg font-medium ${isDark ? 'text-[#ffffff]' : 'text-gray-900'} mb-1`}>Address</h3>
-                <p className={`${isDark ? 'text-[#ffffff]' : 'text-gray-600'}`}>7/23 Poddar Nagar, Jadavpur</p>
-                <p className={`${isDark ? 'text-[#ffffff]' : 'text-gray-600'}`}>Kolkata, India</p>
+                <h3 className="text-lg font-medium text-fg mb-1">Address</h3>
+                <p className="text-fg/80">7/23 Poddar Nagar, Jadavpur</p>
+                <p className="text-fg/80">Kolkata, India</p>
               </div>
             </div>
 
@@ -106,8 +106,8 @@ export default function Contact({ isDark }) {
                 <Image src={assets.calling} alt="phone" width={20} height={20} />
               </div>
               <div className="ml-4">
-                <h3 className={`text-lg font-medium ${isDark ? 'text-[#ffffff]' : 'text-gray-900'} mb-1`}>Phone</h3>
-                <p className={`${isDark ? 'text-[#ffffff]' : 'text-gray-600'}`}>+91 85838 42681</p>
+                <h3 className="text-lg font-medium text-fg mb-1">Phone</h3>
+                <p className="text-fg/80">+91 85838 42681</p>
               </div>
             </div>
 
@@ -117,8 +117,8 @@ export default function Contact({ isDark }) {
                 <Image src={assets.email} alt="email" width={20} height={20} />
               </div>
               <div className="ml-4">
-                <h3 className={`text-lg font-medium ${isDark ? 'text-[#ffffff]' : 'text-gray-900'} mb-1`}>Email</h3>
-                <p className={`${isDark ? 'text-[#ffffff]' : 'text-gray-600'}`}>avrodeep.pal17@gmail.com</p>
+                <h3 className="text-lg font-medium text-fg mb-1">Email</h3>
+                <p className="text-fg/80">avrodeep.pal17@gmail.com</p>
               </div>
             </div>
           </div>
@@ -129,14 +129,14 @@ export default function Contact({ isDark }) {
             <div className="absolute inset-0 bg-gradient-to-r from-[#ffe31f] to-[#ff1e1e] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl z-0"></div>
 
             {/* Front Form Card */}
-            <div className={`relative z-10 ${isDark ? 'bg-[#333333]' : 'bg-[#fffccf]'} rounded-3xl p-6 md:p-10 shadow-xl`}>
-              <h2 className={`text-2xl font-bold mb-6 ${isDark ? 'text-[#ffffff]' : 'text-gray-900'}`}>Any message for me?</h2>
+            <div className="relative z-10 bg-card rounded-3xl p-6 md:p-10 shadow-xl border border-border">
+              <h2 className="text-2xl font-bold mb-6 text-fg">Any message for me?</h2>
               <form onSubmit={onSubmit} className="space-y-6">
                 <input
                   type="text"
                   name="name"
                   placeholder="Your Name"
-                  className={`w-full rounded-md border ${isDark ? 'border-gray-600 bg-[#171717] text-[#ffffff] placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900'} px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]`}
+                  className="w-full rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
                   required
                   disabled={isSubmitting}
                 />
@@ -146,7 +146,7 @@ export default function Contact({ isDark }) {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className={`flex-1 rounded-md border ${isDark ? 'border-gray-600 bg-[#171717] text-[#ffffff] placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900'} px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]`}
+                    className="flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
                     required
                     disabled={isSubmitting}
                   />
@@ -154,7 +154,7 @@ export default function Contact({ isDark }) {
                     type="tel"
                     name="phone"
                     placeholder="Phone Number"
-                    className={`flex-1 rounded-md border ${isDark ? 'border-gray-600 bg-[#171717] text-[#ffffff] placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900'} px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]`}
+                    className="flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -163,7 +163,7 @@ export default function Contact({ isDark }) {
                   name="message"
                   rows="5"
                   placeholder="Write your message..."
-                  className={`w-full rounded-md border ${isDark ? 'border-gray-600 bg-[#171717] text-[#ffffff] placeholder-gray-400' : 'border-gray-300 bg-white text-gray-900'} px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e]`}
+                  className="w-full rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
                   required
                   disabled={isSubmitting}
                 ></textarea>

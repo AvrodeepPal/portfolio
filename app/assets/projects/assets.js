@@ -3,19 +3,30 @@ import stockslstm from './stockslstm.png';
 
 export const projects = [
   {
-    name: 'Time Series Analysis LSTM',
+    name: "Let's Connect!",
+    image: stockslstm,
+    description: 'AI-powered Recruitment aid for Personalization and Automating Placement Communication!',
+    lang: ['Python', 'Streamlit', 'Supabase', 'MistralAI'],
+    isLive: 1,
+    code: 'https://github.com/AvrodeepPal/LetsConnect',
+    live: 'https://letsconnect-jumca2026.streamlit.app'
+  },
+  {
+    name: 'Time Series Analysis',
     image: stockslstm,
     description: 'Stock Market Forecasting powered by Deep Learning! Compare ReLU and GELU Performance while Accuracy skyrockets!',
-    lang: ['Python', 'Jupyter'],
+    lang: ['Jupyter', 'LSTM', 'TensorFlow', 'Keras'],
     isLive: 0,
-    link: 'https://github.com/AvrodeepPal/Time_Series_Analysis_LSTM'
+    code: 'https://github.com/AvrodeepPal/Time_Series_Analysis_LSTM',
+    live: ''
   },
   {
     name: 'Star Emporium',
     image: starempo,
     description: 'Save some Clicks and lot more Trees! Visit the Ultimate Online Book Store for Learners!',
-    lang: ['Java', 'Swing GUI'],
+    lang: ['Java', 'Swing GUI', 'JDBC', 'MySQL'],
     isLive: 0,
-    link: 'https://github.com/AvrodeepPal/Star_Emporium'
+    code: 'https://github.com/AvrodeepPal/Star_Emporium',
+    live: ''
   }
 ];

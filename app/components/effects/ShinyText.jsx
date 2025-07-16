@@ -7,9 +7,7 @@ const ShinyText = ({ text, disabled = false, speed = 5, className = '', isDark =
     <div
       className={`text-[#fdd700] bg-clip-text inline-block ${disabled ? '' : 'animate-shine'} ${className}`}
       style={{
-        backgroundImage: isDark 
-          ? 'linear-gradient(120deg, rgba(255, 215, 0, 0.7) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 215, 0, 0.7) 60%)'
-          : 'linear-gradient(120deg, rgba(255, 215, 0, 0.7) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 215, 0, 0.7) 60%)',
+        backgroundImage: 'linear-gradient(120deg, rgba(255, 215, 0, 0.7) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 215, 0, 0.7) 60%)',
         backgroundSize: '200% 100%',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',

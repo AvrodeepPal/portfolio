@@ -32,7 +32,7 @@ export default function Home() {
   }, [isDark]);
 
   return (
-    <>
+    <div className="bg-bg text-fg min-h-screen">
       <Navbar isDark={isDark} setDark={setDark} />
       <Hero isDark={isDark} />
       <About isDark={isDark} />
@@ -40,6 +40,6 @@ export default function Home() {
       <Projects isDark={isDark} />
       <Contact isDark={isDark} />
       <Footer isDark={isDark} />
-    </>
+    </div>
   );
 }
