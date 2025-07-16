@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Avrodeep Pal - Portfolio',
   description: 'Full Stack Developer & Designer',
   icons: {
-    icon: '/favicon.ico',
+    icon: './favicon.ico',
   },
 };
 

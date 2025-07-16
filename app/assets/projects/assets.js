@@ -1,10 +1,11 @@
 import starempo from './starempo.png';
 import stockslstm from './stockslstm.png';
+import letsconnect from './letsconnect.png';
 
 export const projects = [
   {
     name: "Let's Connect!",
-    image: stockslstm,
+    image: letsconnect,
     description: 'AI-powered Recruitment aid for Personalization and Automating Placement Communication!',
     lang: ['Python', 'Streamlit', 'Supabase', 'MistralAI'],
     isLive: 1,
