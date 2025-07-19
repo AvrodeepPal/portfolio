@@ -23,9 +23,9 @@ export default function Footer({ isDark }) {
             href="https://github.com/AvrodeepPal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-fg/60 hover:text-fg transition"
+            className="text-fg/60 hover:text-fg transition flex items-center justify-center w-5 h-5"
           >
-            <Image src={assets.github} alt="GitHub" width={20} height={20} />
+            <Image src={assets.github} alt="GitHub" width={20} height={20} className="w-full h-full object-contain" />
           </a>
         </li>
         <li>
@@ -33,9 +33,29 @@ export default function Footer({ isDark }) {
             href="https://linkedin.com/in/avrodeeppal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-fg/60 hover:text-blue-500 transition"
+            className="text-fg/60 hover:text-blue-500 transition flex items-center justify-center w-5 h-5"
           >
-            <Image src={assets.linkedin} alt="LinkedIn" width={20} height={20} />
+            <Image src={assets.linkedin} alt="LinkedIn" width={20} height={20} className="w-full h-full object-contain" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/avrodeeppal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-fg/60 hover:text-pink-500 transition flex items-center justify-center w-5 h-5"
+          >
+            <Image src={assets.instagram} alt="Instagram" width={20} height={20} className="w-full h-full object-contain" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://leetcode.com/u/AvrodeepPal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-fg/60 hover:text-orange-500 transition flex items-center justify-center w-5 h-5"
+          >
+            <Image src={assets.leetcode} alt="LeetCode" width={20} height={20} className="w-full h-full object-contain" />
           </a>
         </li>
       </ul>

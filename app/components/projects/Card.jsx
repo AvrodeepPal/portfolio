@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { FiExternalLink } from 'react-icons/fi';
 
 const Card = ({ title, image, description, lang, isLive, code, live, index }) => {
   const cardVariants = {
@@ -141,7 +142,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
             className="px-6 py-2 text-white text-xl font-medium rounded-lg cursor-pointer
               focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-all duration-300"
           >
-            Live
+            Live <FiExternalLink className="inline ml-1 mb-[5px]" size={18} />
           </motion.a>
         )}
       </motion.div>

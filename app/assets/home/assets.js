@@ -6,6 +6,8 @@ import email from './email.svg';
 import heart from './heart.svg';
 import linkedin from './linkedin.svg';
 import github from './github.svg';
+import instagram from './instagram.svg';
+import leetcode from './leetcode.svg';
 
 export const assets = {
     logo,
@@ -15,5 +17,7 @@ export const assets = {
     email,
     heart,
     linkedin,
-    github
+    github,
+    instagram,
+    leetcode
 };

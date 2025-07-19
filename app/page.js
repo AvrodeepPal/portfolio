@@ -1,12 +1,12 @@
 'use client';
 
 import Navbar from "./components/Navbar";
-import About from "./components/About";
+import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
-import Contact from "./components/Contacts";
+import Contact from "./components/contacts/Contacts";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+import Hero from "./components/home/Hero";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
   }, [isDark]);
 
   return (
-    <div className="bg-bg text-fg min-h-screen">
+    <div className="bg-bg text-fg overflow-x-hidden">
       <Navbar isDark={isDark} setDark={setDark} />
       <Hero isDark={isDark} />
       <About isDark={isDark} />
