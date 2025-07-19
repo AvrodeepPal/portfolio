@@ -79,17 +79,21 @@ const HeroContent = ({ isDark }) => {
 
       <motion.div
         {...animations.button}
-        className="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center px-2"
+        className="flex flex-col sm:flex-row gap-4 mt-4 justify-center items-center px-2"
       >
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleCVClick}
-          className={`rounded-2xl border-2 border-dashed px-4 xs:px-5 sm:px-6 py-3 font-semibold uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base max-w-full ${
+          className={`rounded-2xl border-2 border-dashed px-5 py-3 font-semibold uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base ${
             isDark
               ? "border-white hover:shadow-[-4px_4px_4px_white]"
               : "border-black hover:shadow-[-4px_4px_4px_black]"
           }`}
+          style={{
+            minWidth: "160px",
+            maxWidth: "fit-content",
+          }}
         >
           <span className="whitespace-nowrap">Open CV</span> <FiArrowRight />
         </motion.button>

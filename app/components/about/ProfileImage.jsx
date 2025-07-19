@@ -10,7 +10,6 @@ export default function ProfileImage() {
       variants={animationVariants.fadeInUp}
       className="relative w-48 sm:w-60 md:w-80 max-w-full"
     >
-      {/* Glowing animated border on hover */}
       <motion.div
         className="absolute -inset-2 rounded-[2rem] pointer-events-none z-0"
         style={{
@@ -32,7 +31,6 @@ export default function ProfileImage() {
         }}
       />
 
-      {/* Main image container */}
       <div className="relative rounded-3xl overflow-hidden bg-white p-1 z-10">
         <Image
           src={assets.photo}
@@ -42,7 +40,6 @@ export default function ProfileImage() {
         />
       </div>
 
-      {/* Outer soft glow always present, subtle */}
       <motion.div
         initial={{ opacity: 0.25 }}
         whileHover={{ opacity: 0.5 }}

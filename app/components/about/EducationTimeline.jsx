@@ -58,7 +58,7 @@ export default function EducationTimeline() {
           </motion.div>
         ))}
 
-        <div className="col-start-1 col-end-2 relative h-8">
+        <div className="hidden md:block col-start-1 col-end-2 relative h-8">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full bg-[#ffe31f]" />
         </div>
 

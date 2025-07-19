@@ -13,15 +13,12 @@ const Toast = ({ show, type, message, onClose }) => {
             type === 'success' ? 'bg-green-500' : 'bg-red-500'
           }`}
         >
-          {/* Emoji */}
           <span className="text-xl">
             {type === 'success' ? '✅' : '❌'}
           </span>
 
-          {/* Message */}
           <span className="font-medium flex-1">{message}</span>
 
-          {/* Close button */}
           <button
             onClick={onClose}
             className="ml-2 text-white hover:text-gray-200 text-xl font-bold focus:outline-none"
