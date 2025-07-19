@@ -13,7 +13,7 @@ const ContactInfo = () => {
         variants={animationVariants.fadeInUp}
         className="text-lg text-fg/80 mb-12"
       >
-        Reach out to me for collaboration, freelancing, or any inquiries. I'm always open to meaningful conversations.
+        As a passionate university student eager to explore real-world challenges and sharpen my skills. Whether you're offering internships, mentorship or a chance to collaborate — I'd love to connect and grow together.
       </motion.p>
 
       <motion.div

@@ -34,11 +34,11 @@ export const useContactForm = () => {
       const data = await response.json();
 
       if (data.success) {
-        showToastMessage('success', "Message sent successfully! Will contact back asap!");
+        showToastMessage('success', "Thanks! Message sent successfully! Will contact back asap!");
         event.target.reset();
       } else {
         console.log("Error", data);
-        showToastMessage('error', data.message || "Something went wrong! Please try again.");
+        showToastMessage('error', data.message || "Oops! Something went wrong! Please try again.");
       }
     } catch (error) {
       console.error("Network error:", error);

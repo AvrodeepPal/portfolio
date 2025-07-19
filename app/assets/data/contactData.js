@@ -10,7 +10,7 @@ export const contactInfo = [
     title: "Address",
     details: [
       "7/23 Poddar Nagar, Jadavpur",
-      "Kolkata, India"
+      "Kolkata-700068, India"
     ]
   },
   {

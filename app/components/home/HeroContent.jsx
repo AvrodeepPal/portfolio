@@ -19,7 +19,6 @@ const HeroContent = ({ isDark }) => {
 
   return (
     <div className="relative z-10 flex flex-col items-center justify-center text-center gap-4 sm:gap-6 max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-4xl w-full mx-auto">
-      {/* Greeting */}
       <motion.p
         {...animations.greeting}
         className="text-sm sm:text-lg font-medium"
@@ -28,16 +27,16 @@ const HeroContent = ({ isDark }) => {
         Hello!
       </motion.p>
 
-      {/* Title */}
       <motion.h1
         {...animations.title}
-        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-fg text-center w-full break-words"
+        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-fg text-center w-full break-words leading-tight overflow-visible"
       >
         I'm{" "}
         <span
           style={{
             WebkitTextStroke: isDark ? "0.5px #f0f0f0" : "0.5px #000",
           }}
+          className="inline-block leading-tight"
         >
           <ShinyText
             text="Avrodeep Pal"
@@ -46,16 +45,15 @@ const HeroContent = ({ isDark }) => {
             className="font-bold"
           />
         </span>
-        <sub
-          className="text-lg sm:text-2xl align-bottom ml-1"
+        <span
+          className="text-lg sm:text-2xl align-text-bottom ml-1 inline-block"
           style={{ color: "#fdd700" }}
         >
           {" "}
           &#9733;
-        </sub>
+        </span>
       </motion.h1>
 
-      {/* Subtitle */}
       <motion.h2
         {...animations.subtitle}
         className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-medium text-fg flex flex-wrap justify-center items-center gap-1 sm:gap-2 text-center w-full max-w-full px-2"
@@ -72,7 +70,6 @@ const HeroContent = ({ isDark }) => {
         />
       </motion.h2>
 
-      {/* Description */}
       <motion.p
         {...animations.description}
         className="text-sm xs:text-base sm:text-lg text-fg/80 mt-2 text-center w-full max-w-full px-2"
@@ -80,7 +77,6 @@ const HeroContent = ({ isDark }) => {
         Welcome to my Portfolio!
       </motion.p>
 
-      {/* Button */}
       <motion.div
         {...animations.button}
         className="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center px-2"

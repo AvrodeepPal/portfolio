@@ -24,6 +24,20 @@
   --text-muted: #9ca3af;
 }
 
+/* Apply Poppins as default font */
+body {
+  font-family: var(--font-poppins, 'Poppins', system-ui, -apple-system, sans-serif);
+  font-variation-settings: normal;
+}
+
+/* Enhanced typography for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins, 'Poppins', system-ui, -apple-system, sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Navbar glass effect */
 .navbar-glass {
   backdrop-filter: blur(16px);
   background: rgba(255, 225, 0, 0.3);
@@ -33,12 +47,11 @@
 }
 
 .dark .navbar-glass {
-  background: rgba(255, 255, 255, 0.4); /* white glass for dark mode */
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.08);
 }
 
-/* Animations */
 .animated-background {
     background-size: 400%;
     -webkit-animation: animation 3s ease infinite;
@@ -106,4 +119,42 @@
 
 .theme-toggle:hover .theme-toggle__expand {
     transform: rotate(20deg);
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counter-spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-counter-spin-slow {
+  animation: counter-spin-slow 20s linear infinite;
+}
+
+.group:hover .animate-spin-slow {
+  animation-play-state: paused;
+}
+
+.group:hover .animate-counter-spin-slow {
+  animation-play-state: paused;
+}
+
+.animate-none {
+  animation: none !important;
 }

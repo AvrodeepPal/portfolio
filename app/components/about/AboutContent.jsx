@@ -9,15 +9,14 @@ export default function AboutContent() {
     <div className="flex w-full flex-col lg:flex-row items-center gap-10">
       <ProfileImage />
 
-      <div className="flex flex-1 flex-col gap-6">
+      <div className="flex flex-1 flex-col gap-2">
         <motion.p 
           variants={animationVariants.fadeInUp}
           className="text-fg/80 leading-relaxed"
         >
-          I'm a passionate and creative developer with a love for clean design,
-          elegant code, and building meaningful user experiences. My journey
-          spans from early coding curiosity to formal computer science education.
-          I'm deeply interested in frontend engineering, motion UI, and modern web technologies.
+          Developer by skill, student by status and problem solver by skill. Obsessed with clean UIs, clever logic and LLMs that actually make sense. <br/>
+          A huge believer in Parkinson’s Law, clean commit histories and non-caffeinated debugging (prefer black-tea @ midnight). <br/>
+          Currently on a mission to blend design and AI to build things that matter.
         </motion.p>
 
         <EducationTimeline />

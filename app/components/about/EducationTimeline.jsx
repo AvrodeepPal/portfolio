@@ -11,7 +11,7 @@ export default function EducationTimeline() {
         <motion.div 
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden md:block col-start-2 col-end-3 absolute -top-3 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
+          className="hidden md:block col-start-1 col-end-2 absolute -top-3 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
         >
           ▲
         </motion.div>
@@ -29,7 +29,7 @@ export default function EducationTimeline() {
             }}
             className="flex md:contents"
           >
-            <div className="col-start-2 col-end-3 mr-10 md:mx-auto relative">
+            <div className="col-start-1 col-end-2 mr-10 md:mx-auto relative">
               <div className="h-full w-6 flex items-center justify-center">
                 <div className="h-full w-1 bg-[#ffe31f] pointer-events-none"></div>
               </div>
@@ -45,7 +45,7 @@ export default function EducationTimeline() {
               variants={animationVariants.timelineVariants}
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="border-2 border-[#ffe31f] col-start-3 col-end-12 p-4 rounded-xl my-4 mr-auto w-full bg-card cursor-pointer"
+              className="border-2 border-[#ffe31f] col-start-2 col-end-12 p-4 rounded-xl my-4 mr-auto w-full bg-card cursor-pointer"
             >
               <h3 className="font-semibold text-xl text-fg mb-1">
                 {item.title}
@@ -58,10 +58,14 @@ export default function EducationTimeline() {
           </motion.div>
         ))}
 
+        <div className="col-start-1 col-end-2 relative h-8">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full bg-[#ffe31f]" />
+        </div>
+
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden md:block col-start-2 col-end-3 absolute -bottom-4 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
+          className="hidden md:block col-start-1 col-end-2 absolute -bottom-2.5 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
         >
           ▼
         </motion.div>

@@ -32,7 +32,7 @@ export const heroConfig = {
     },
   },
   trueFocusConfig: {
-    sentence: [" Data Science ", " Web Development "],
+    sentence: [" AI Engineering ", " Web Development "],
     blurAmount: 4,
     borderColor: "#fdd700",
     glowColor: "rgba(253, 215, 0, 0.6)",

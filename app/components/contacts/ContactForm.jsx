@@ -46,13 +46,13 @@ const ContactForm = ({ onSubmit, isSubmitting }) => {
 
           <motion.div 
             variants={animationVariants.fadeInUp}
-            className="flex flex-col xl:flex-row gap-4"
+            className="flex flex-col md:flex-row gap-4"
           >
             <input
               type="email"
               name="email"
               placeholder="Email"
-              className="flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
+              className="w-full md:flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
               required
               disabled={isSubmitting}
             />
@@ -60,7 +60,7 @@ const ContactForm = ({ onSubmit, isSubmitting }) => {
               type="tel"
               name="phone"
               placeholder="Phone Number"
-              className="flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
+              className="w-full md:flex-1 rounded-md border border-input-border bg-input-bg text-fg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff1e1e] placeholder:text-fg/50"
               disabled={isSubmitting}
             />
           </motion.div>
