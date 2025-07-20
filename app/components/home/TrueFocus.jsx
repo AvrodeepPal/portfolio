@@ -33,7 +33,7 @@ const TrueFocus = ({
   }, [words.length, animationDuration, pauseBetweenAnimations]);
 
   return (
-    <div className="inline-flex flex-wrap gap-1">
+    <div className="inline-flex flex-wrap gap-1 justify-center">
       {words.map((word, index) => (
         <React.Fragment key={index}>
           <motion.span

@@ -1,14 +1,14 @@
 # 🌟 Avrodeep Pal - Portfolio
 
-A modern, interactive portfolio showcasing my journey as a Computer Science student and aspiring developer. Built with cutting-edge web technologies and featuring smooth animations, dark/light themes, and responsive design.
+A modern, interactive portfolio showcasing my journey as a Computer Science student and aspiring developer. Built with cutting-edge web technologies and featuring smooth animations, dark/light themes and responsive design.
 
 ## 🚀 Live Demo
 
-[View Portfolio](your-portfolio-url-here)
+[View Portfolio](https://avrodeeppal-portfolio.vercel.app)
 
 ## 📋 About
 
-I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur University with a passion for AI/ML, web development, and problem-solving. This portfolio represents my technical skills, academic achievements, and project work.
+I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur University with a passion for AI/ML, web development and problem-solving. This portfolio represents my technical skills, academic achievements and project work.
 
 **Key Highlights:**
 - 🎓 WBSU Rank 1 in Bachelor's (CGPA: 9.91/10.0)
@@ -21,7 +21,7 @@ I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur Univer
 - **Modern Design**: Clean, professional UI with smooth animations
 - **Dark/Light Theme**: Toggle between themes with system preference detection
 - **Fully Responsive**: Optimized for all device sizes
-- **Interactive Elements**: 3D animations, hover effects, and micro-interactions
+- **Interactive Elements**: 3D animations, hover effects and micro-interactions
 - **Contact Form**: Functional contact form with validation
 - **Performance Optimized**: Fast loading with optimized assets
 
@@ -122,7 +122,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ## 📞 Contact
 

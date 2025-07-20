@@ -4,6 +4,36 @@ import { assets } from '@/app/assets/home/assets';
 import { contactInfo, animationVariants } from '@/app/assets/data/contactData';
 
 const ContactInfo = () => {
+  const getClickableContent = (info, detail) => {
+    if (info.title === 'Phone') {
+      return (
+        <a 
+          href={`tel:${detail}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-fg/80 hover:text-[#fdd017] transition-colors duration-200 cursor-pointer"
+        >
+          {detail}
+        </a>
+      );
+    }
+    
+    if (info.title === 'Email') {
+      return (
+        <a 
+          href={`mailto:${detail}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-fg/80 hover:text-[#fdd017] transition-colors duration-200 cursor-pointer"
+        >
+          {detail}
+        </a>
+      );
+    }
+    
+    return <p className="text-fg/80">{detail}</p>;
+  };
+
   return (
     <motion.div 
       variants={animationVariants.slideInLeft}
@@ -33,7 +63,9 @@ const ContactInfo = () => {
             <div className="ml-4">
               <h3 className="text-lg font-medium text-fg mb-1">{info.title}</h3>
               {info.details.map((detail, detailIndex) => (
-                <p key={detailIndex} className="text-fg/80">{detail}</p>
+                <div key={detailIndex}>
+                  {getClickableContent(info, detail)}
+                </div>
               ))}
             </div>
           </motion.div>

@@ -54,10 +54,10 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={cardVariants}
-      className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,20,0.05))] p-6 rounded-xl shadow-lg
+      className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,20,0.05))] p-[6%] rounded-xl shadow-lg
         flex flex-col items-center justify-center overflow-hidden
         border-border border transition-all duration-300 transform hover:-translate-y-2
-        w-full min-w-[25rem]"
+        w-full min-w-[20rem]"
       style={{
         boxShadow: 'none',
       }}

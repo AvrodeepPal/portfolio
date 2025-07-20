@@ -12,6 +12,7 @@
     "@react-three/drei": "^10.5.1",
     "@react-three/fiber": "^9.2.0",
     "framer-motion": "^12.23.6",
+    "hamburger-react": "^2.5.2",
     "next": "^15.4.1",
     "ogl": "^1.0.11",
     "react": "^19.0.0",

@@ -1,6 +1,6 @@
 'use client';
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";

@@ -18,7 +18,7 @@ const fadeInUp = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="text-center w-full px-[12%] py-20 scroll-mt-0 bg-bg">
+    <section id="projects" className="text-center w-full px-[8%] py-20 scroll-mt-0 bg-bg">
       <motion.div
         initial="hidden"
         whileInView="visible"
