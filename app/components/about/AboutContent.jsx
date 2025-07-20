@@ -14,7 +14,7 @@ export default function AboutContent() {
           variants={animationVariants.fadeInUp}
           className="text-fg/80 leading-relaxed"
         >
-          Developer by skill, student by status and problem solver by skill. Obsessed with clean UIs, clever logic and LLMs that actually make sense. <br/>
+          Developer by skill, Student by status and Problem Solver by spirit. Obsessed with clean UIs, clever logic and LLMs that actually make sense. <br/>
           A huge believer in Parkinson’s Law, clean commit histories and non-caffeinated debugging (prefer black-tea @ midnight). <br/>
           Currently on a mission to blend design and AI to build things that matter.
         </motion.p>
