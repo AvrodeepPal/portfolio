@@ -1,20 +1,27 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
+import Hero from "./components/home/Hero";
 import About from "./components/about/About";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contacts/Contacts";
 import Footer from "./components/Footer";
-import Hero from "./components/home/Hero";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-
-  const[isDark, setDark] = useState(true);
+  const [isDark, setDark] = useState(true);
 
   useEffect(() => {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    // Scroll to top on refresh
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
       setDark(true);
     } else {
       setDark(false);
