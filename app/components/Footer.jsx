@@ -3,6 +3,10 @@ import Image from 'next/image';
 import { assets, footerSocialLinks } from '@/app/assets/home/assets';
 
 export default function Footer({ isDark }) {
+  const getIconSrc = (social) => {
+    return isDark ? social.iconLight : social.iconDark;
+  };
+
   return (
     <footer className="w-full py-7 px-4 flex flex-col items-center text-center border-t bg-bg border-border">
       <h6 className="text-sm text-fg/80 mb-4">
@@ -27,7 +31,7 @@ export default function Footer({ isDark }) {
               className={`text-fg/60 ${social.hoverColor} transition flex items-center justify-center w-5 h-5`}
             >
               <Image 
-                src={social.icon} 
+                src={getIconSrc(social)} 
                 alt={social.alt} 
                 width={20} 
                 height={20} 
