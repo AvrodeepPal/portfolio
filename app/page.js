@@ -41,11 +41,18 @@ export default function Home() {
   return (
     <div className="bg-bg text-fg overflow-x-hidden">
       <Navbar isDark={isDark} setDark={setDark} />
-      <Hero isDark={isDark} />
-      <About isDark={isDark} />
-      <Skills isDark={isDark} />
-      <Projects isDark={isDark} />
-      <Contact isDark={isDark} />
+      
+      <section id="home"> <Hero isDark={isDark} /></section>
+      <section id="about"><About isDark={isDark} /></section>
+      <section id="skills"><Skills isDark={isDark} /></section>
+      <section id="projects">
+        <Projects isDark={isDark} />
+      </section>
+      
+      <section id="contact">
+        <Contact isDark={isDark} />
+      </section>
+      
       <Footer isDark={isDark} />
     </div>
   );

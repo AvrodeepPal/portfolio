@@ -10,6 +10,9 @@
   --border: #e5e7eb;
   --shadow: rgba(0, 0, 0, 0.1);
   --text-muted: #6b7280;
+  --gold: #b8860b;
+  --red: #ff3b3b;
+  --nav-active-bg: rgba(255, 59, 59, 0.15);
 }
 
 .dark {
@@ -22,6 +25,9 @@
   --border: #374151;
   --shadow: rgba(0, 0, 0, 0.3);
   --text-muted: #9ca3af;
+  --gold: #ffd700;
+  --red: #ff6b6b;
+  --nav-active-bg: rgba(255, 107, 107, 0.2);
 }
 
 /* Apply Poppins as default font */
@@ -50,6 +56,67 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.08);
+}
+
+/* ======================================================
+   SCROLL-SPY NAVBAR ANIMATIONS
+   ====================================================== */
+
+/* Remove background highlight, only underline */
+.nav-list li {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Underline animation for links */
+.nav-list li a {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+}
+
+.nav-list li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #FF0000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Hover state */
+.nav-list li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Active state - show underline */
+.nav-list li.active a::after {
+  transform: scaleX(1);
+  background-color: #FF0000;
+}
+
+/* Active link color */
+.nav-list li.active a {
+  color: #FF0000;
+}
+
+/* Mobile menu support */
+@media (max-width: 768px) {
+  .mobile-menu .nav-list li a::after {
+    background-color: #FF0000;
+  }
+  
+  .mobile-menu .nav-list li.active a {
+    color: #FF0000;
+  }
+  
+  .mobile-menu .nav-list li.active a::after {
+    transform: scaleX(1);
+  }
 }
 
 .animated-background {

@@ -2,7 +2,7 @@ import React from 'react';
 import NavLinks from './NavLinks';
 import { styleConstants } from '../../assets/data/navbarData';
 
-const MobileMenu = ({ isOpen, onClose }) => {
+const MobileMenu = ({ isOpen, onClose, activeSection, onNavClick }) => {
   const { mobileMenu } = styleConstants;
 
   return (
@@ -26,7 +26,12 @@ const MobileMenu = ({ isOpen, onClose }) => {
           <span className="text-fg font-bold text-lg">Menu</span>
         </div>
         
-        <NavLinks isMobile={true} onLinkClick={onClose} />
+        <NavLinks 
+          isMobile={true} 
+          onLinkClick={onClose}
+          activeSection={activeSection}
+          onNavClick={onNavClick}
+        />
       </div>
     </>
   );

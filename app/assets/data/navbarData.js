@@ -1,13 +1,13 @@
 export const navLinks = [
-  { href: "#top", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" }
+  { href: "#home", label: "Home", id: "home" },
+  { href: "#about", label: "About", id: "about" },
+  { href: "#skills", label: "Skills", id: "skills" },
+  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#contact", label: "Contact", id: "contact" }
 ];
 
 export const brandConfig = {
-  href: "#top",
+  href: "#home",
   alt: "logo",
   maxWidths: {
     base: "100px",

@@ -11,9 +11,11 @@ import MobileMenu from './MobileMenu';
 const Navbar = ({ isDark, setDark }) => {
   const {
     mobileMenuOpen,
+    activeSection,
     toggleDarkMode,
     toggleMobileMenu,
-    closeMobileMenu
+    closeMobileMenu,
+    handleNavClick
   } = useNavbar(isDark, setDark);
 
   const { glassBackground, colors } = styleConstants;
@@ -26,6 +28,7 @@ const Navbar = ({ isDark, setDark }) => {
                     ${glassBackground.light} ${glassBackground.dark} 
                     backdrop-blur-[10px] shadow-sm transition-all 
                     ${glassBackground.hoverLight} ${glassBackground.hoverDark}`}
+        onClick={(e) => handleNavClick(e, brandConfig.href)}
       >
         <Image
           src={assets.logo}
@@ -35,7 +38,10 @@ const Navbar = ({ isDark, setDark }) => {
         />
       </a>
 
-      <NavLinks />
+      <NavLinks 
+        activeSection={activeSection}
+        onNavClick={handleNavClick}
+      />
       
       <div className="flex items-center gap-2 xs:gap-3 flex-shrink-0">
         <div className={`flex items-center justify-center p-3 xs:p-3 rounded-full 
@@ -51,7 +57,7 @@ const Navbar = ({ isDark, setDark }) => {
         </div>
 
         <div className="block md:hidden z-70">
-            <div className={`rounded-full -p-[10px] flex items-center justify-center
+            <div className={`menu-button rounded-full -p-[10px] flex items-center justify-center
                             ${glassBackground.light} ${glassBackground.dark} 
                             backdrop-blur-[10px] shadow-sm hover:bg-[rgba(255,215,0,0.3)] ${glassBackground.hoverDark} 
                             transition-all`}>
@@ -71,7 +77,9 @@ const Navbar = ({ isDark, setDark }) => {
 
       <MobileMenu 
         isOpen={mobileMenuOpen} 
-        onClose={closeMobileMenu} 
+        onClose={closeMobileMenu}
+        activeSection={activeSection}
+        onNavClick={handleNavClick}
       />
     </nav>
   );
