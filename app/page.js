@@ -8,13 +8,13 @@ import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contacts/Contacts";
 import Footer from "./components/Footer";
+import ChatBot from "./components/chatbot/ChatBot";
 
 export default function Home() {
   const [isDark, setDark] = useState(true);
 
   useEffect(() => {
-    // Scroll to top on refresh
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // scroll to top on refresh
   }, []);
 
   useEffect(() => {
@@ -41,18 +41,12 @@ export default function Home() {
   return (
     <div className="bg-bg text-fg overflow-x-hidden">
       <Navbar isDark={isDark} setDark={setDark} />
-      
-      <section id="home"> <Hero isDark={isDark} /></section>
-      <section id="about"><About isDark={isDark} /></section>
-      <section id="skills"><Skills isDark={isDark} /></section>
-      <section id="projects">
-        <Projects isDark={isDark} />
-      </section>
-      
-      <section id="contact">
-        <Contact isDark={isDark} />
-      </section>
-      
+      <ChatBot />
+      <section id="home"> <Hero isDark={isDark} /> </section>
+      <section id="about"> <About isDark={isDark} /> </section>
+      <section id="skills"> <Skills isDark={isDark} /> </section>
+      <section id="projects"> <Projects isDark={isDark} /> </section>
+      <section id="contact"> <Contact isDark={isDark} /> </section>
       <Footer isDark={isDark} />
     </div>
   );

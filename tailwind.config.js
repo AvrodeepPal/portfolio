@@ -35,3 +35,38 @@ export default {
   },
   plugins: [],
 };
+// tailwind.config.js additions
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        accent: {
+          DEFAULT: "#FDD000",
+          light: "#FFE44D",
+          dark: "#FFDF55",
+        },
+      },
+      animation: {
+        "fade-in": "fadeIn 0.3s ease-in-out",
+        "slide-in-from-bottom-4": "slideInFromBottom 0.3s ease-out",
+        "slide-in-from-right-2": "slideInFromRight 0.3s ease-out",
+        "slide-in-from-left-2": "slideInFromLeft 0.3s ease-out",
+      },
+      keyframes: {
+        fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+        slideInFromBottom: {
+          "0%": { transform: "translateY(16px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideInFromRight: {
+          "0%": { transform: "translateX(8px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        slideInFromLeft: {
+          "0%": { transform: "translateX(-8px)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+      },
+    },
+  },
+};
