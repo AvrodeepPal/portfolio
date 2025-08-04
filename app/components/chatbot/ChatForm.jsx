@@ -1,55 +1,20 @@
-// app/chatbot/ChatForm.jsx
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useChatForm } from "@/app/assets/hooks/useChatBot";
+import { chatFormConfig, chatBotConfig, chatStyles, accessibilityLabels } from "@/app/assets/data/chatBotData";
 
 export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
-  const [message, setMessage] = useState("");
-  const [isComposing, setIsComposing] = useState(false);
-  const textareaRef = useRef(null);
-
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "2.5rem";
-      const computed = window.getComputedStyle(textarea);
-      const height =
-        parseInt(computed.getPropertyValue("border-top-width"), 10) +
-        parseInt(computed.getPropertyValue("padding-top"), 10) +
-        textarea.scrollHeight +
-        parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-        parseInt(computed.getPropertyValue("border-bottom-width"), 10);
-      
-      const maxHeight = isMobile ? 100 : 120;
-      textarea.style.height = Math.min(height, maxHeight) + "px";
-    }
-  }, [message, isMobile]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const trimmedMessage = message.trim();
-    
-    if (trimmedMessage.length === 0 || trimmedMessage.length > 1000 || isComposing) {
-      return;
-    }
-    
-    onSend(trimmedMessage);
-    setMessage("");
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey && !isComposing) {
-      e.preventDefault();
-      const trimmedMessage = message.trim();
-      if (trimmedMessage.length > 0 && trimmedMessage.length <= 1000) {
-        onSend(trimmedMessage);
-        setMessage("");
-      }
-    }
-  };
-
-  const isDisabled = message.trim().length === 0 || message.length > 1000;
-  const charactersLeft = 1000 - message.length;
-  const isNearLimit = charactersLeft < 100;
+  const {
+    message,
+    isComposing,
+    textareaRef,
+    isDisabled,
+    charactersLeft,
+    isNearLimit,
+    setMessage,
+    setIsComposing,
+    handleSubmit,
+    handleKeyDown
+  } = useChatForm(onSend, isMobile);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
@@ -57,9 +22,9 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
         className={`
           relative rounded-xl border-2 transition-all duration-200
           ${isDark
-            ? "bg-slate-800/60 border-slate-600/30 focus-within:border-[#FDD000]/60"
-            : "bg-white/80 border-gray-300/40 focus-within:border-[#FDD000]/60"}
-          focus-within:ring-2 focus-within:ring-[#FDD000]/20 focus-within:shadow-lg
+            ? chatStyles.backgrounds.dark.form.container
+            : chatStyles.backgrounds.light.form.container}
+          focus-within:ring-2 focus-within:ring-[${chatBotConfig.colors.primary}]/20 focus-within:shadow-lg
         `}
       >
         <textarea
@@ -69,17 +34,19 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
           onKeyDown={handleKeyDown}
           onCompositionStart={() => setIsComposing(true)}
           onCompositionEnd={() => setIsComposing(false)}
-          placeholder="Ask AStarBot anything..."
+          placeholder={chatFormConfig.placeholder}
           className={`
             w-full px-4 py-3 pr-14 rounded-xl resize-none border-none outline-none
             bg-transparent text-sm leading-relaxed
-            ${isDark ? "text-white placeholder-gray-400" : "text-gray-900 placeholder-gray-500"}
-            min-h-[2.5rem] ${isMobile ? 'max-h-[100px]' : 'max-h-[120px]'} overflow-auto
+            ${isDark 
+              ? `${chatStyles.text.dark.primary} ${chatStyles.text.dark.placeholder}` 
+              : `${chatStyles.text.light.primary} ${chatStyles.text.light.placeholder}`}
+            ${chatFormConfig.minHeight} ${isMobile ? 'max-h-[100px]' : 'max-h-[120px]'} overflow-auto
           `}
           rows={1}
-          aria-label="Type your message to AStarBot"
+          aria-label={accessibilityLabels.form.textarea}
           aria-describedby="send-button character-count"
-          maxLength={1000}
+          maxLength={chatFormConfig.maxLength}
         />
 
         <button
@@ -88,13 +55,13 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
           className={`
             absolute right-2 bottom-2 w-10 h-10 rounded-xl flex items-center justify-center
             transition-all duration-200
-            focus:outline-none focus:ring-2 focus:ring-[#FDD000]/50 focus:ring-offset-2
+            focus:outline-none focus:ring-2 focus:ring-[${chatBotConfig.colors.primary}]/50 focus:ring-offset-2
             ${isDark ? "focus:ring-offset-slate-800/60" : "focus:ring-offset-white/80"}
             ${isDisabled
               ? `opacity-40 cursor-not-allowed ${isDark ? "bg-gray-600" : "bg-gray-300"}`
-              : `bg-[#FDD000] hover:bg-[#FFE44D] active:bg-[#FFDF55] cursor-pointer transform hover:scale-110 active:scale-95 shadow-md hover:shadow-lg`}
+              : `bg-[${chatBotConfig.colors.primary}] hover:bg-[${chatBotConfig.colors.primaryHover}] active:bg-[${chatBotConfig.colors.primaryActive}] cursor-pointer transform hover:scale-110 active:scale-95 shadow-md hover:shadow-lg`}
           `}
-          aria-label="Send message to AStarBot"
+          aria-label={accessibilityLabels.form.send}
           id="send-button"
           role="button"
         >
@@ -105,10 +72,10 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
       </div>
 
       {!isMobile && (
-        <div className={`flex items-center justify-between text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}>
-          <span>Press Enter to send, Shift+Enter for newline</span>
+        <div className={`flex items-center justify-between text-xs ${isDark ? chatStyles.text.dark.helper : chatStyles.text.light.helper}`}>
+          <span>{chatFormConfig.instructions.desktop}</span>
           <span 
-            id="character-count"
+            id={accessibilityLabels.form.characterCount}
             className={`flex items-center space-x-1 ${isNearLimit ? "text-red-500 font-medium" : ""}`}
           >
             <span>{charactersLeft}</span>
@@ -118,9 +85,9 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
       )}
 
       {isMobile && isNearLimit && (
-        <div className={`text-xs text-center ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+        <div className={`text-xs text-center ${isDark ? chatStyles.text.dark.helper : chatStyles.text.light.helper}`}>
           <span 
-            id="character-count"
+            id={accessibilityLabels.form.characterCount}
             className={`${isNearLimit ? "text-red-500 font-medium" : ""}`}
           >
             {charactersLeft} characters left
@@ -128,7 +95,7 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
         </div>
       )}
 
-      {message.length > 1000 && (
+      {message.length > chatBotConfig.maxMessageLength && (
         <div
           className={`
             text-xs px-3 py-2 rounded-lg flex items-center space-x-1
@@ -137,7 +104,7 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
           role="alert"
         >
           <span>⚠️</span>
-          <span>Message is too long. Please keep under 1000 characters.</span>
+          <span>{chatFormConfig.validation.tooLong}</span>
         </div>
       )}
 
@@ -150,7 +117,7 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
           role="alert"
         >
           <span>💡</span>
-          <span>Please enter a valid message (no empty spaces only).</span>
+          <span>{chatFormConfig.validation.empty}</span>
         </div>
       )}
     </form>

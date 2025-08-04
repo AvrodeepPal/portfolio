@@ -1,32 +1,30 @@
-// app/chatbot/ChatMessage.jsx
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useChatMessage } from "@/app/assets/hooks/useChatBot";
+import { chatBotConfig, chatStyles } from "@/app/assets/data/chatBotData";
 import { assets } from "@/app/assets/connect/assets";
 
 export default function ChatMessage({ sender, content, timestamp, isDark = false, isMobile = false }) {
-  const [showTimestamp, setShowTimestamp] = useState(false);
+  const { showTimestamp, formatTime, toggleTimestamp } = useChatMessage();
+  
   const isUser = sender === "user";
   const isBot = sender === "bot";
 
-  const formatTime = (date) =>
-    new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", hour12: true }).format(date);
-
   return (
     <div 
-      className={`flex ${isUser ? "justify-end" : "justify-start"} group animate-in slide-in-from-${isUser ? "right" : "left"}-2 fade-in duration-300`} 
-      onClick={() => setShowTimestamp((v) => !v)}
+      className={`flex ${isUser ? "justify-end" : "justify-start"} group ${isUser ? chatStyles.animations.messageSlideIn.user : chatStyles.animations.messageSlideIn.bot}`} 
+      onClick={toggleTimestamp}
     >
       <div
         className={`
-          ${isMobile ? 'max-w-[85%]' : 'max-w-[350px]'} px-4 py-3 rounded-2xl transition-all duration-200 cursor-pointer
+          ${isMobile ? 'max-w-[85%]' : 'max-w-[350px]'} px-4 py-3 rounded-2xl ${chatStyles.animations.message}
           ${isUser
-            ? `bg-[#FDD000] text-black rounded-br-sm shadow-md hover:shadow-lg hover:bg-[#FFE44D] transform hover:scale-[1.02]`
-            : `rounded-bl-sm border border-[#FDD000]/30 shadow-sm hover:shadow-md ${
+            ? `${chatStyles.backgrounds.light.message.user} ${chatStyles.text.light.primary} rounded-br-sm shadow-md hover:shadow-lg`
+            : `rounded-bl-sm ${chatStyles.borders.message.bot} shadow-sm ${
                 isDark
-                  ? "bg-slate-800/80 text-white hover:bg-slate-800/90"
-                  : "bg-white/95 text-gray-900 hover:bg-white"
-              } hover:border-[#FDD000]/50 transform hover:scale-[1.02]`
+                  ? `${chatStyles.backgrounds.dark.message.bot} ${chatStyles.text.dark.primary}`
+                  : `${chatStyles.backgrounds.light.message.bot} ${chatStyles.text.light.primary}`
+              }`
           }
         `}
       >
@@ -35,20 +33,20 @@ export default function ChatMessage({ sender, content, timestamp, isDark = false
             <div className="w-5 h-5 rounded-full bg-[#FDD000]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
               <Image
                 src={assets.avro_star}
-                alt="AStarBot"
+                alt={chatBotConfig.name}
                 width={16}
                 height={16}
                 className="rounded-full"
               />
             </div>
-            <span className={`${isDark ? "text-gray-300" : "text-gray-600"} text-xs font-medium`}>
-              AStarBot
+            <span className={`${isDark ? chatStyles.text.dark.secondary : chatStyles.text.light.secondary} text-xs font-medium`}>
+              {chatBotConfig.name}
             </span>
           </div>
         )}
 
         <div 
-          className={`text-sm leading-relaxed whitespace-pre-wrap break-words ${isUser ? "text-black" : isDark ? "text-white" : "text-gray-900"}`}
+          className={`text-sm leading-relaxed whitespace-pre-wrap break-words ${isUser ? chatStyles.text.light.primary : isDark ? chatStyles.text.dark.primary : chatStyles.text.light.primary}`}
           dangerouslySetInnerHTML={{ __html: content }}
         />
 
@@ -62,7 +60,7 @@ export default function ChatMessage({ sender, content, timestamp, isDark = false
       </div>
 
       {showTimestamp && (
-        <div className={`flex items-end pb-1 px-2 text-xs ${isDark ? "text-gray-400" : "text-gray-500"} ${isUser ? "order-first" : "order-last"} animate-in fade-in duration-200`}>
+        <div className={`flex items-end pb-1 px-2 text-xs ${isDark ? chatStyles.text.dark.helper : chatStyles.text.light.helper} ${isUser ? "order-first" : "order-last"} animate-in fade-in duration-200`}>
           <span className="whitespace-nowrap">{formatTime(timestamp)}</span>
         </div>
       )}

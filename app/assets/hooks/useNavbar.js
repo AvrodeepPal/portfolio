@@ -21,7 +21,6 @@ export const useNavbar = (isDark, setDark) => {
     setMobileMenuOpen(false);
   };
 
-  // Scroll spy functionality
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
     
@@ -62,10 +61,8 @@ export const useNavbar = (isDark, setDark) => {
       }
     };
 
-    // Initial check
     handleScroll();
     
-    // Backup scroll listener
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -74,7 +71,6 @@ export const useNavbar = (isDark, setDark) => {
     };
   }, []);
 
-  // Handle smooth scrolling
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
@@ -88,7 +84,6 @@ export const useNavbar = (isDark, setDark) => {
       });
     }
     
-    // Close mobile menu if open
     if (mobileMenuOpen) {
       setMobileMenuOpen(false);
     }
