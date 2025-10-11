@@ -41,6 +41,6 @@ export const heroConfig = {
     showAnd: true,
   },
   cvButtonConfig: {
-    url: "https://drive.google.com/file/d/1biiOnfbyn7DnGQesvgodBLi3PhMoXwoM/view?usp=sharing",
+    url: "https://drive.google.com/file/d/1LnccvagVyz-G7Ar_ICkGKLOuqlmbFJTc/view?usp=sharing",
   },
 };
