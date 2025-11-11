@@ -1,8 +1,18 @@
 import starempo from './starempo.png';
 import stockslstm from './stockslstm.png';
 import letsconnect from './letsconnect.png';
+import creditrisk from './creditriskeda.png';
 
 export const projects = [
+  {
+    name: 'Credit Risk EDA - Loan Approval',
+    image: creditrisk,
+    description: 'Analyze and Visualize tonight! Explote 8 ML ALgos compete to predict Loan Approval Status!',
+    lang: ['Python', 'XGBoost', 'CatBoost', 'SMOTE'],
+    isLive: 2,
+    code: 'https://github.com/AvrodeepPal/Credit_Risk_Analysis',
+    live: 'https://colab.research.google.com/drive/1g_uLKLJcYQTYBa7wu4g3afXA7OqEvIyk?usp=sharing'
+  },
   {
     name: "Let's Connect!",
     image: letsconnect,

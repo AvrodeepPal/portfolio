@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiExternalLink } from 'react-icons/fi';
 
+
 const Card = ({ title, image, description, lang, isLive, code, live, index }) => {
   const cardVariants = {
     hidden: { 
@@ -23,6 +24,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
     }
   };
 
+
   const imageVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -34,6 +36,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       }
     }
   };
+
 
   const contentVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -47,6 +50,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       }
     }
   };
+
 
   return (
     <motion.div
@@ -75,6 +79,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
         {title}
       </motion.h3>
 
+
       <motion.div 
         variants={imageVariants}
         className="w-full h-52 md:h-64 relative mb-4 overflow-hidden rounded-lg"
@@ -88,12 +93,14 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
         />
       </motion.div>
 
+
       <motion.p 
         variants={contentVariants}
         className="text-fg/70 text-sm mb-4 w-full text-left leading-relaxed"
       >
         {description}
       </motion.p>
+
 
       <motion.div 
         variants={contentVariants}
@@ -118,6 +125,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
         ))}
       </motion.div>
 
+
       <motion.div 
         variants={contentVariants}
         className="w-full flex justify-center gap-4"
@@ -133,7 +141,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
           Code
         </motion.a>
         
-        {isLive === 1 && (
+        {(isLive === 1 || isLive === 2) && (
           <motion.a
             href={live}
             target="_blank"
@@ -142,12 +150,13 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
             className="px-6 py-2 text-white text-xl font-medium rounded-lg cursor-pointer
               focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-all duration-300"
           >
-            Live <FiExternalLink className="inline ml-1 mb-[5px]" size={18} />
+            {isLive === 1 ? 'Live' : 'Colab'} <FiExternalLink className="inline ml-1 mb-[5px]" size={18} />
           </motion.a>
         )}
       </motion.div>
     </motion.div>
   );
 };
+
 
 export default Card;
