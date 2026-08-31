@@ -9,8 +9,8 @@ export const contactInfo = [
     icon: "location",
     title: "Address",
     details: [
-      "7/23 Poddar Nagar, Jadavpur",
-      "Kolkata-700068, India"
+      "Shibtala, Mistryghat, Monirampore",
+      "Barrackpore, Kolkata-700120, India"
     ]
   },
   {
@@ -28,8 +28,8 @@ export const contactInfo = [
 export const animationVariants = {
   fadeInUp: {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
@@ -37,11 +37,11 @@ export const animationVariants = {
       }
     }
   },
-  
+
   slideInLeft: {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.4,
@@ -49,11 +49,11 @@ export const animationVariants = {
       }
     }
   },
-  
+
   slideInRight: {
     hidden: { opacity: 0, x: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
         duration: 0.4,
@@ -61,7 +61,7 @@ export const animationVariants = {
       }
     }
   },
-  
+
   staggerContainer: {
     hidden: {},
     visible: {
@@ -71,7 +71,7 @@ export const animationVariants = {
       }
     }
   },
-  
+
   contactInfoContainer: {
     hidden: {},
     visible: {
@@ -81,7 +81,7 @@ export const animationVariants = {
       }
     }
   },
-  
+
   formContainer: {
     hidden: {},
     visible: {

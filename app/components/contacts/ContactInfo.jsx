@@ -7,7 +7,7 @@ const ContactInfo = () => {
   const getClickableContent = (info, detail) => {
     if (info.title === 'Phone') {
       return (
-        <a 
+        <a
           href={`tel:${detail}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -17,10 +17,10 @@ const ContactInfo = () => {
         </a>
       );
     }
-    
+
     if (info.title === 'Email') {
       return (
-        <a 
+        <a
           href={`mailto:${detail}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -30,27 +30,27 @@ const ContactInfo = () => {
         </a>
       );
     }
-    
+
     return <p className="text-fg/80">{detail}</p>;
   };
 
   return (
-    <motion.div 
+    <motion.div
       variants={animationVariants.slideInLeft}
       className="pr-6"
     >
-      <motion.p 
+      <motion.p
         variants={animationVariants.fadeInUp}
         className="text-lg text-fg/80 mb-12"
       >
-        As a passionate university student eager to explore real-world challenges and sharpen my skills. Whether you're offering internships, mentorship or a chance to collaborate — I'd love to connect and grow together.
+        As a passionate university student eager to explore real-world challenges and sharpen my skills. Whether you're offering internships, mentorship or a chance to collaborate - I'd love to connect and grow together.
       </motion.p>
 
       <motion.div
         variants={animationVariants.contactInfoContainer}
       >
         {contactInfo.map((info, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             variants={animationVariants.slideInLeft}
             whileHover={{ scale: 1.02, y: -2 }}

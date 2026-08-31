@@ -2,7 +2,7 @@ export const educationData = [
   {
     title: "Masters in Computer Applications (MCA)",
     institution: "Jadavpur University, Kolkata",
-    details: "CGPA (upto 1st sem): 8.33 (2024 - 2026)"
+    details: "CGPA : 8.90 (2024 - 2026)"
   },
   {
     title: "B.Sc. Computer Science Honours",
@@ -24,8 +24,8 @@ export const educationData = [
 export const animationVariants = {
   fadeInUp: {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
@@ -36,11 +36,11 @@ export const animationVariants = {
 
   timelineVariants: {
     hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6, 
+        duration: 0.6,
         ease: "easeOut"
       }
     }
