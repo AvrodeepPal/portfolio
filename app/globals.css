@@ -16,7 +16,7 @@
 }
 
 .dark {
-  --bg: #171717;
+  --bg: #070707;
   --fg: #ffffff;
   --card: #1e1e1e;
   --accent: #3b82f6;
@@ -37,7 +37,12 @@ body {
 }
 
 /* Enhanced typography for headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-poppins, 'Poppins', system-ui, -apple-system, sans-serif);
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -109,89 +114,101 @@ h1, h2, h3, h4, h5, h6 {
   .mobile-menu .nav-list li a::after {
     background-color: #FF0000;
   }
-  
+
   .mobile-menu .nav-list li.active a {
     color: #FF0000;
   }
-  
+
   .mobile-menu .nav-list li.active a::after {
     transform: scaleX(1);
   }
 }
 
 .animated-background {
-    background-size: 400%;
-    -webkit-animation: animation 3s ease infinite;
-    -moz-animation: animation 3s ease infinite;
-    animation: animation 3s ease infinite;
+  background-size: 400%;
+  -webkit-animation: animation 3s ease infinite;
+  -moz-animation: animation 3s ease infinite;
+  animation: animation 3s ease infinite;
 }
 
 @keyframes animation {
-    0%, 100% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @layer utilities {
-    @keyframes gradientChange {
-        0% { background-position: 0% }
-        50% { background-position: 100% }
-        100% { background-position: 0% }
+  @keyframes gradientChange {
+    0% {
+      background-position: 0%
     }
 
-    .gradient {
-        background: linear-gradient(90deg, yellow, red);
-        background-size: 200% 200%;
+    50% {
+      background-position: 100%
     }
 
-    .element-to-rotate {
-        animation: gradientChange 3s ease infinite;
+    100% {
+      background-position: 0%
     }
+  }
 
-    .nav-bg {
-        background-color: var(--nav-bg);
-    }
+  .gradient {
+    background: linear-gradient(90deg, yellow, red);
+    background-size: 200% 200%;
+  }
 
-    .nav-hover:hover {
-        color: var(--nav-hover);
-    }
+  .element-to-rotate {
+    animation: gradientChange 3s ease infinite;
+  }
 
-    .bg-bg {
-        background-color: var(--bg);
-    }
+  .nav-bg {
+    background-color: var(--nav-bg);
+  }
 
-    .bg-card {
-        background-color: var(--card);
-    }
+  .nav-hover:hover {
+    color: var(--nav-hover);
+  }
 
-    .text-fg {
-        color: var(--fg);
-    }
+  .bg-bg {
+    background-color: var(--bg);
+  }
 
-    .text-muted {
-        color: var(--text-muted);
-    }
+  .bg-card {
+    background-color: var(--card);
+  }
 
-    .border-border {
-        border-color: var(--border);
-    }
+  .text-fg {
+    color: var(--fg);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .border-border {
+    border-color: var(--border);
+  }
 }
 
 .theme-toggle__expand {
-    transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
 .theme-toggle:hover .theme-toggle__expand {
-    transform: rotate(20deg);
+  transform: rotate(20deg);
 }
 
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -201,6 +218,7 @@ h1, h2, h3, h4, h5, h6 {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-360deg);
   }
