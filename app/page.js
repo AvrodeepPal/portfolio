@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Hero from "./components/hero/Hero";
 import About from "./components/about/About";
+import Experience from "./components/experience/Experience";
 import Skills from "./components/skills/Skills";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contacts/Contacts";
@@ -43,9 +44,10 @@ export default function Home() {
       <Navbar isDark={isDark} setDark={setDark} />
       <ChatBot />
       <section id="home"> <Hero isDark={isDark} /> </section>
-      <section id="about"> <About isDark={isDark} /> </section>
+      <section id="experience"> <Experience isDark={isDark} /> </section>
       <section id="skills"> <Skills isDark={isDark} /> </section>
       <section id="projects"> <Projects isDark={isDark} /> </section>
+      <section id="about"> <About isDark={isDark} /> </section>
       <section id="contact"> <Contact isDark={isDark} /> </section>
       <Footer isDark={isDark} />
     </div>

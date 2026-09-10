@@ -13,6 +13,7 @@
   --gold: #b8860b;
   --red: #ff3b3b;
   --nav-active-bg: rgba(255, 59, 59, 0.15);
+  --working: #16a34a;
 }
 
 .dark {
@@ -28,6 +29,7 @@
   --gold: #ffd700;
   --red: #ff6b6b;
   --nav-active-bg: rgba(255, 107, 107, 0.2);
+  --working: #4ade80;
 }
 
 /* Apply Poppins as default font */
@@ -242,4 +244,63 @@ h6 {
 
 .animate-none {
   animation: none !important;
+}
+/* ======================================================
+   EXPERIENCE SECTION
+   ====================================================== */
+
+/* `text-fg/70`-style opacity modifiers do not compile here (bg/fg are plain
+   utilities, not theme colours), so tinted text gets its own utilities. */
+@layer utilities {
+  .text-fg-soft {
+    color: color-mix(in srgb, var(--fg) 72%, transparent);
+  }
+
+  .text-fg-faint {
+    color: color-mix(in srgb, var(--fg) 50%, transparent);
+  }
+
+  .bg-bg-soft {
+    background-color: color-mix(in srgb, var(--bg) 60%, transparent);
+  }
+
+  .text-working {
+    color: var(--working);
+  }
+}
+
+/* "Working" status dot */
+
+@keyframes working-blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes working-ping {
+  0% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+.animate-working-blink {
+  animation: working-blink 1.4s ease-in-out infinite;
+}
+
+.animate-working-ping {
+  animation: working-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
