@@ -1,5 +1,5 @@
 'use client';
-import { coding, tech, tools, webdev } from '@/app/assets/skills/assets';
+import { coding, aiml, llmrag, infra, webdev, dataTools, platforms } from '@/app/assets/skills/assets';
 import React from 'react';
 import Tile from './Tile';
 import { motion } from 'framer-motion';
@@ -31,9 +31,12 @@ const slideInLeft = {
 export default function Skills() {
   const skillSections = [
     { title: "Coding:", skills: coding },
-    { title: "Development:", skills: webdev },
-    { title: "Tools:", skills: tools },
-    { title: "Technologies:", skills: tech }
+    { title: "AI & ML:", skills: aiml },
+    { title: "LLM & RAG:", skills: llmrag },
+    { title: "Infra:", skills: infra },
+    { title: "Web Dev:", skills: webdev },
+    { title: "Data & Tools:", skills: dataTools },
+    { title: "Platforms:", skills: platforms }
   ];
 
   return (
@@ -77,7 +80,7 @@ export default function Skills() {
               }
             }
           }}
-          className="text-left flex flex-col gap-6 py-6"
+          className="text-left flex flex-col gap-8 py-6"
         >
           {skillSections.map((section, sectionIndex) => (
             <motion.div
@@ -97,7 +100,7 @@ export default function Skills() {
             >
               <motion.h3 
                 variants={slideInLeft}
-                className="text-xl font-semibold mb-0 text-fg min-w-[150px]"
+                className="text-xl font-semibold mb-0 text-fg min-w-[150px] md:pt-2"
               >
                 {section.title}
               </motion.h3>
@@ -112,7 +115,7 @@ export default function Skills() {
                     }
                   }
                 }}
-                className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3"
+                className="flex flex-wrap gap-3 sm:gap-4"
               >
                 {section.skills.map((skill, index) => (
                   <Tile 

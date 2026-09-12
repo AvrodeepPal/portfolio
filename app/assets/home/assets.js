@@ -14,6 +14,8 @@ import leetcode_dark from './leetcode-dark.svg';
 import leetcode_light from './leetcode-light.svg';
 import twitterx_dark from './twitterx-dark.svg';
 import twitterx_light from './twitterx-light.svg';
+import hackerrank_dark from './hackerrank-dark.svg';
+import hackerrank_light from './hackerrank-light.svg';
 
 export const assets = {
     logo,
@@ -31,7 +33,9 @@ export const assets = {
     leetcode_dark,
     leetcode_light,
     twitterx_dark,
-    twitterx_light
+    twitterx_light,
+    hackerrank_dark,
+    hackerrank_light
 };
 
 export const footerSocialLinks = [
@@ -66,6 +70,14 @@ export const footerSocialLinks = [
     iconLight: leetcode_light,
     alt: "LeetCode",
     hoverColor: "hover:text-orange-500"
+  },
+  {
+    key: "hackerrank",
+    href: "https://www.hackerrank.com/profile/avrodeep_pal_17",
+    iconDark: hackerrank_dark,
+    iconLight: hackerrank_light,
+    alt: "HackerRank",
+    hoverColor: "hover:text-green-500"
   },
   {
     key: "twitterx",

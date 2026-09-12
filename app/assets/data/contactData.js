@@ -9,7 +9,6 @@ export const contactInfo = [
     icon: "location",
     title: "Address",
     details: [
-      "Shibtala, Mistryghat, Monirampore",
       "Barrackpore, Kolkata-700120, India"
     ]
   },

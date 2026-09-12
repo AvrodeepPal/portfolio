@@ -6,6 +6,7 @@ import instagram from './instagram.svg';
 import leetcode from './leetcode.svg';
 import twitterx_dark from './twitterx-dark.svg';
 import twitterx_light from './twitterx-light.svg';
+import hackerrank from './hackerrank.svg';
 
 
 export const assets = {
@@ -16,7 +17,8 @@ export const assets = {
     instagram,
     leetcode,
     twitterx_dark,
-    twitterx_light
+    twitterx_light,
+    hackerrank
 };
 
 export const socialMediaLinks = [
@@ -44,6 +46,12 @@ export const socialMediaLinks = [
     href: "https://leetcode.com/u/AvrodeepPal",
     icon: leetcode,
     alt: "LeetCode Profile"
+  },
+  {
+    key: "hackerrank",
+    href: "https://www.hackerrank.com/profile/avrodeep_pal_17",
+    icon: hackerrank,
+    alt: "HackerRank Profile"
   },
   {
     key: "twitterx",

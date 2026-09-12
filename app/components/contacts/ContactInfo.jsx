@@ -43,7 +43,7 @@ const ContactInfo = () => {
         variants={animationVariants.fadeInUp}
         className="text-lg text-fg/80 mb-12"
       >
-        As a passionate university student eager to explore real-world challenges and sharpen my skills. Whether you're offering internships, mentorship or a chance to collaborate - I'd love to connect and grow together.
+        Building AI systems in production, reading papers on reasoning models in parallel. Always open to a good technical conversation - reach out if you're working on something interesting.
       </motion.p>
 
       <motion.div

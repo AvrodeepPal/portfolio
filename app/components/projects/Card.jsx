@@ -7,13 +7,13 @@ import { FiExternalLink } from 'react-icons/fi';
 
 const Card = ({ title, image, description, lang, isLive, code, live, index }) => {
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       scale: 0.9
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
@@ -27,7 +27,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
 
   const imageVariants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
       transition: {
         duration: 0.6,
@@ -40,8 +40,8 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
 
   const contentVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.4,
@@ -58,7 +58,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={cardVariants}
-      className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,20,0.05))] p-[6%] rounded-xl shadow-lg
+      className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,220,0.05))] p-[6%] rounded-xl shadow-lg
         flex flex-col items-center justify-center overflow-hidden
         border-border border transition-all duration-300 transform hover:-translate-y-2
         w-full min-w-[20rem]"
@@ -72,7 +72,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
         e.currentTarget.style.boxShadow = 'none';
       }}
     >
-      <motion.h3 
+      <motion.h3
         variants={contentVariants}
         className="text-xl font-semibold text-left w-full mb-4 text-fg"
       >
@@ -80,7 +80,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       </motion.h3>
 
 
-      <motion.div 
+      <motion.div
         variants={imageVariants}
         className="w-full h-52 md:h-64 relative mb-4 overflow-hidden rounded-lg"
       >
@@ -94,7 +94,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       </motion.div>
 
 
-      <motion.p 
+      <motion.p
         variants={contentVariants}
         className="text-fg/70 text-sm mb-4 w-full text-left leading-relaxed"
       >
@@ -102,7 +102,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       </motion.p>
 
 
-      <motion.div 
+      <motion.div
         variants={contentVariants}
         className="flex flex-wrap gap-2 justify-start w-full mb-4"
       >
@@ -112,8 +112,8 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false }}
-            transition={{ 
-              duration: 0.3, 
+            transition={{
+              duration: 0.3,
               delay: index * 0.1 + 0.4 + techIndex * 0.05,
               ease: "easeOut"
             }}
@@ -126,7 +126,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       </motion.div>
 
 
-      <motion.div 
+      <motion.div
         variants={contentVariants}
         className="w-full flex justify-center gap-4"
       >
@@ -140,7 +140,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
         >
           Code
         </motion.a>
-        
+
         {(isLive === 1 || isLive === 2) && (
           <motion.a
             href={live}
