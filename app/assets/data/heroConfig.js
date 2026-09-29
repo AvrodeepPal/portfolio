@@ -24,6 +24,12 @@ export const heroConfig = {
       viewport: { once: true, amount: 0.3 },
       transition: { delay: 1.3, duration: 0.7, ease: "easeOut" },
     },
+    now: {
+      initial: { opacity: 0, y: 30 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true, amount: 0.3 },
+      transition: { delay: 1.45, duration: 0.7, ease: "easeOut" },
+    },
     button: {
       initial: { opacity: 0, y: 30 },
       whileInView: { opacity: 1, y: 0 },
@@ -32,7 +38,7 @@ export const heroConfig = {
     },
   },
   trueFocusConfig: {
-    sentence: [" AI Engineering ", " Web Development "],
+    sentence: [" LLM Infrastructure ", " Reasoning Models "],
     blurAmount: 4,
     borderColor: "#fdd700",
     glowColor: "rgba(253, 215, 0, 0.6)",
@@ -42,5 +48,12 @@ export const heroConfig = {
   },
   cvButtonConfig: {
     url: "https://drive.google.com/file/d/10GftRhc4D74p6BKakwCvMkIYNl3HSFSj/view?usp=sharing",
+  },
+  nowConfig: {
+    reading: "DeepSeek-R1",
+    building: {
+      label: "ReasoningPractice",
+      url: "https://github.com/AvrodeepPal/ReasoningPractice",
+    },
   },
 };

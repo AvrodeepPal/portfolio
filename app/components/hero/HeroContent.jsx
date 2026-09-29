@@ -11,6 +11,7 @@ const HeroContent = ({ isDark }) => {
     animations,
     trueFocusConfig,
     cvButtonConfig,
+    nowConfig,
   } = heroConfig;
 
   const handleCVClick = () => {
@@ -71,10 +72,21 @@ const HeroContent = ({ isDark }) => {
       </motion.h2>
 
       <motion.p
-        {...animations.description}
-        className="text-sm xs:text-base sm:text-lg text-fg/80 mt-2 text-center w-full max-w-full px-2"
+        {...animations.now}
+        className="text-xs sm:text-sm text-fg/50 text-center w-full max-w-full px-2"
       >
-        Welcome to my Portfolio!
+        Reading{" "}
+        <span className="font-medium">{nowConfig.reading}</span>
+        {"  ·  "}
+        Building{" "}
+        <a
+          href={nowConfig.building.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium underline decoration-dotted hover:text-fg transition-colors"
+        >
+          {nowConfig.building.label}
+        </a>
       </motion.p>
 
       <motion.div
@@ -85,11 +97,10 @@ const HeroContent = ({ isDark }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleCVClick}
-          className={`rounded-2xl border-2 border-dashed px-5 py-3 font-semibold uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base ${
-            isDark
-              ? "border-white hover:shadow-[-4px_4px_4px_white]"
-              : "border-black hover:shadow-[-4px_4px_4px_black]"
-          }`}
+          className={`rounded-2xl border-2 border-dashed px-5 py-3 font-semibold uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base ${isDark
+            ? "border-white hover:shadow-[-4px_4px_4px_white]"
+            : "border-black hover:shadow-[-4px_4px_4px_black]"
+            }`}
           style={{
             minWidth: "160px",
             maxWidth: "fit-content",
