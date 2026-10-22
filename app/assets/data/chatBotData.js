@@ -1,11 +1,8 @@
 export const chatBotConfig = {
   name: "AStarBot",
   description: "Avrodeep's Portfolio Assistant",
-  maxMessageLength: 1000,
-  typingDelay: {
-    start: 800,
-    response: 2200
-  },
+  // Mirrors MAX_QUESTION_CHARS on the backend; longer questions get a 422.
+  maxMessageLength: 500,
   dimensions: {
     button: {
       width: "w-14",
@@ -42,28 +39,44 @@ export const chatBotConfig = {
   }
 };
 
+export const chatApiConfig = {
+  baseUrl: (process.env.NEXT_PUBLIC_ASTARBOT_API_URL || "").replace(/\/+$/, ""),
+  // Render's free tier can take ~50s to wake from sleep.
+  requestTimeoutMs: 90000,
+  // Fallback for the backend's client window policy; GET /version overrides it.
+  window: {
+    maxRecentMessages: 12,
+    messagesAfterSummary: 4,
+    summaryTriggerAfter: 10
+  },
+  // Backend caps each message in recent_messages at this many characters.
+  maxMessageChars: 2000
+};
+
 export const chatMessages = {
   initial: {
-    content: "👋 Hi! I'm AStarBot, your AI assistant. How can I help you today?",
-    sender: "bot"
-  },
-  demo: {
-    content: "Thanks for your message! This is a demo response from AStarBot. Ask me anything about the portfolio.",
+    content: "Hi there! I'm AStarBot, Avrodeep's AI assistant, here to chat in his stead while he's offline. Ask me about his education, projects, skills, or what he's into outside of code.",
     sender: "bot"
   },
   typing: {
     content: "AStarBot is typing"
+  },
+  errors: {
+    network: "I hit a technical snag reaching the server. It may be waking up, so please try again in a moment.",
+    timeout: "The server is taking too long to respond. It may be waking up, so please try again in a moment.",
+    interrupted: "_The response was interrupted. Please ask again._",
+    notConfigured: "The chat backend isn't configured. Set NEXT_PUBLIC_ASTARBOT_API_URL and restart the dev server."
   }
 };
 
 export const chatFormConfig = {
   placeholder: "Ask AStarBot anything...",
-  maxLength: 1000,
+  maxLength: 500,
   minHeight: "2.5rem",
   characterWarningThreshold: 100,
   validation: {
     empty: "Please enter a valid message (no empty spaces only).",
-    tooLong: "Message is too long. Please keep under 1000 characters."
+    tooLong: "Message is too long. Please keep under 500 characters."
   },
   instructions: {
     desktop: "Press Enter to send, Shift+Enter for newline",
@@ -129,7 +142,10 @@ export const chatStyles = {
 };
 
 export const storageConfig = {
-  key: "astarbot-messages",
+  // Holds the visible messages plus the backend memory (window + summary).
+  key: "astarbot-chat",
+  // Pre-backend key that only held demo messages; removed on load.
+  legacyKey: "astarbot-messages",
   autoSave: true
 };
 

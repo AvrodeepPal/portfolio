@@ -2,7 +2,7 @@
 import { useChatForm } from "@/app/assets/hooks/useChatBot";
 import { chatFormConfig, chatBotConfig, chatStyles, accessibilityLabels } from "@/app/assets/data/chatBotData";
 
-export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
+export default function ChatForm({ onSend, isDark = false, isMobile = false, isBusy = false }) {
   const {
     message,
     isComposing,
@@ -14,7 +14,7 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false }) {
     setIsComposing,
     handleSubmit,
     handleKeyDown
-  } = useChatForm(onSend, isMobile);
+  } = useChatForm(onSend, isMobile, isBusy);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">

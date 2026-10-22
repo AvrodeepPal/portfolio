@@ -1,8 +1,28 @@
 "use client";
 import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useChatMessage } from "@/app/assets/hooks/useChatBot";
 import { chatBotConfig, chatStyles } from "@/app/assets/data/chatBotData";
 import { assets } from "@/app/assets/connect/assets";
+
+// Bot answers arrive as Markdown. Raw HTML in them is not rendered.
+const markdownComponents = {
+  a: ({ node, ...props }) => (
+    <a
+      {...props}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline decoration-[#FDD000] underline-offset-2 hover:text-[#B89800] dark:hover:text-[#FDD000] break-all"
+      onClick={(e) => e.stopPropagation()}
+    />
+  ),
+  p: ({ node, ...props }) => <p {...props} className="mb-2 last:mb-0" />,
+  ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-5 mb-2 last:mb-0 space-y-1" />,
+  ol: ({ node, ...props }) => <ol {...props} className="list-decimal pl-5 mb-2 last:mb-0 space-y-1" />,
+  strong: ({ node, ...props }) => <strong {...props} className="font-semibold" />,
+  code: ({ node, ...props }) => <code {...props} className="px-1 py-0.5 rounded bg-black/10 text-[0.85em]" />,
+};
 
 export default function ChatMessage({ sender, content, timestamp, isDark = false, isMobile = false }) {
   const { showTimestamp, formatTime, toggleTimestamp } = useChatMessage();
@@ -45,10 +65,17 @@ export default function ChatMessage({ sender, content, timestamp, isDark = false
           </div>
         )}
 
-        <div 
-          className={`text-sm leading-relaxed whitespace-pre-wrap break-words ${isUser ? chatStyles.text.light.primary : isDark ? chatStyles.text.dark.primary : chatStyles.text.light.primary}`}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {isUser ? (
+          <div className={`text-sm leading-relaxed whitespace-pre-wrap break-words ${chatStyles.text.light.primary}`}>
+            {content}
+          </div>
+        ) : (
+          <div className={`text-sm leading-relaxed break-words ${isDark ? chatStyles.text.dark.primary : chatStyles.text.light.primary}`}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+              {content}
+            </ReactMarkdown>
+          </div>
+        )}
 
         {isUser && (
           <div className="flex justify-end mt-1 opacity-70">

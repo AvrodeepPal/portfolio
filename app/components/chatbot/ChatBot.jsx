@@ -12,6 +12,7 @@ export default function ChatBox({ isDark = false }) {
     isOpen,
     messages,
     isTyping,
+    isBusy,
     isMobile,
     chatBodyRef,
     handleSendMessage,
@@ -161,7 +162,7 @@ export default function ChatBox({ isDark = false }) {
               backdrop-blur-sm
             `}
           >
-            <ChatForm onSend={handleSendMessage} isDark={isDark} isMobile={isMobile} />
+            <ChatForm onSend={handleSendMessage} isDark={isDark} isMobile={isMobile} isBusy={isBusy} />
           </div>
         </div>
       )}
