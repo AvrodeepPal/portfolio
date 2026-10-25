@@ -27,6 +27,7 @@ const GlowingEffect = memo(function GlowingEffect({
   const containerRef = useRef(null);
   const lastPosition = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef(0);
+  const angleAnimationRef = useRef(null);
 
   const handleMove = useCallback(
     (e) => {
@@ -79,7 +80,9 @@ const GlowingEffect = memo(function GlowingEffect({
         const angleDiff = ((targetAngle - currentAngle + 180) % 360) - 180;
         const newAngle = currentAngle + angleDiff;
 
-        animate(currentAngle, newAngle, {
+        // Replace the in-flight sweep instead of stacking a new one per pointer move.
+        angleAnimationRef.current?.stop();
+        angleAnimationRef.current = animate(currentAngle, newAngle, {
           duration: movementDuration,
           ease: [0.16, 1, 0.3, 1],
           onUpdate: (value) => {
@@ -92,24 +95,37 @@ const GlowingEffect = memo(function GlowingEffect({
   );
 
   useEffect(() => {
-    if (disabled) return;
+    if (disabled || !containerRef.current) return;
 
     const handleScroll = () => handleMove();
     const handlePointerMove = (e) => handleMove(e);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    document.body.addEventListener('pointermove', handlePointerMove, {
-      passive: true
-    });
+    // Only track the pointer while the card is near the viewport, so off-screen
+    // cards don't measure layout on every pointer move.
+    let listening = false;
+    const listen = (on) => {
+      if (on === listening) return;
+      listening = on;
+      const method = on ? 'addEventListener' : 'removeEventListener';
+      window[method]('scroll', handleScroll, { passive: true });
+      document.body[method]('pointermove', handlePointerMove, { passive: true });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => listen(entry.isIntersecting),
+      { rootMargin: `${proximity}px` }
+    );
+    observer.observe(containerRef.current);
 
     return () => {
+      observer.disconnect();
+      listen(false);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      window.removeEventListener('scroll', handleScroll);
-      document.body.removeEventListener('pointermove', handlePointerMove);
+      angleAnimationRef.current?.stop();
     };
-  }, [handleMove, disabled]);
+  }, [handleMove, disabled, proximity]);
 
   return (
     <>

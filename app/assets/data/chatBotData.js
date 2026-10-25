@@ -23,8 +23,7 @@ export const chatBotConfig = {
   },
   positioning: {
     button: {
-      default: "bottom-6 right-6",
-      mobileOpen: "bottom-24 right-6"
+      default: "bottom-6 right-6"
     },
     chat: {
       desktop: "bottom-[100px] right-6",

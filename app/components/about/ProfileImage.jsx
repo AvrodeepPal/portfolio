@@ -11,19 +11,12 @@ export default function ProfileImage() {
       className="relative w-48 sm:w-60 md:w-80 max-w-full"
     >
       <motion.div
-        className="absolute -inset-2 rounded-[2rem] pointer-events-none z-0"
+        className="absolute -inset-2 rounded-[2rem] pointer-events-none z-0 animate-profile-gradient"
         style={{
           background: 'linear-gradient(130deg, #FFFD00, #FF3C00, #FFFD00)',
           backgroundSize: '200% 200%',
         }}
-        animate={{
-          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-        }}
-        transition={{
-          duration: 6,
-          ease: "linear",
-          repeat: Infinity
-        }}
+        transition={{ duration: 0.3 }}
         whileHover={{
           scale: 1.05,
           opacity: 1,
@@ -36,7 +29,7 @@ export default function ProfileImage() {
           src={assets.photo}
           alt="Profile"
           className="w-full rounded-3xl object-cover shadow-xl"
-          priority
+          sizes="(max-width: 640px) 192px, (max-width: 768px) 240px, 320px"
         />
       </div>
 

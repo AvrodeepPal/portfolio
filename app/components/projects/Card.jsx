@@ -60,7 +60,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
       variants={cardVariants}
       className="bg-transparent backdrop-blur-[20px] bg-[linear-gradient(120deg,rgba(255,255,255,0.3),rgba(255,255,220,0.05))] p-[6%] rounded-xl shadow-lg
         flex flex-col items-center justify-center overflow-hidden
-        border-border border transition-all duration-300 transform hover:-translate-y-2
+        border-border border transition-[translate,box-shadow] duration-300 hover:-translate-y-2
         w-full min-w-[20rem]"
       style={{
         boxShadow: 'none',
@@ -89,7 +89,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
           alt={title}
           fill
           className="object-cover rounded-lg"
-          sizes="(max-width: 768px) 800vw, 33vw"
+          sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 33vw"
         />
       </motion.div>
 
@@ -136,7 +136,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
           whileHover={{ scale: 1.05, y: -2 }}
           whileTap={{ scale: 0.95 }}
           className="px-6 py-2 text-white text-xl font-medium rounded-lg cursor-pointer
-            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-all duration-300"
+            focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-shadow duration-300"
         >
           Code
         </motion.a>
@@ -148,7 +148,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-2 text-white text-xl font-medium rounded-lg cursor-pointer
-              focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-all duration-300"
+              focus:ring ring-black ring-opacity-10 gradient element-to-rotate transition-shadow duration-300"
           >
             {isLive === 1 ? 'Live' : 'Colab'} <FiExternalLink className="inline ml-1 mb-[5px]" size={18} />
           </motion.a>

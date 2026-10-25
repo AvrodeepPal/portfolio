@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import ExperienceHeader from './ExperienceHeader';
 import ExperienceTimeline from './ExperienceTimeline';
 import { experienceAnimations } from '@/app/assets/data/experienceData';
+import { useTheme } from '../ThemeProvider';
 
-export default function Experience({ isDark }) {
+export default function Experience() {
+  const { isDark } = useTheme();
   return (
     <div
       id="experience"

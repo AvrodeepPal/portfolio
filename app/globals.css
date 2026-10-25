@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* dark: utilities follow the theme toggle (.dark on <html>), not the OS setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --bg: #ffffff;
   --fg: #111111;
@@ -303,4 +306,53 @@ h6 {
 
 .animate-working-ping {
   animation: working-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ======================================================
+   AMBIENT LOOPS
+   Infinite decorative motion lives in CSS so it never costs a JS frame,
+   and the browser can skip it when the element is off-screen.
+   ====================================================== */
+
+@keyframes spotlight-drift {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(var(--spotlight-drift, 100px));
+  }
+}
+
+.animate-spotlight-drift {
+  animation: spotlight-drift 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(var(--bob-distance, -10px));
+  }
+}
+
+.animate-bob {
+  animation: bob 2s ease-in-out infinite;
+}
+
+.animate-profile-gradient {
+  animation: animation 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spotlight-drift,
+  .animate-bob,
+  .animate-profile-gradient {
+    animation: none;
+  }
 }

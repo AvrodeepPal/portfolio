@@ -6,7 +6,7 @@ import { animationVariants } from '@/app/assets/data/contactData';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 
-export default function Contact({ isDark }) {
+export default function Contact() {
   const {
     result,
     isSubmitting,

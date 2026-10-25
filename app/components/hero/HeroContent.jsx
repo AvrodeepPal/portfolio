@@ -97,7 +97,7 @@ const HeroContent = ({ isDark }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleCVClick}
-          className={`rounded-2xl border-2 border-dashed px-5 py-3 font-semibold uppercase transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base ${isDark
+          className={`rounded-2xl border-2 border-dashed px-5 py-3 font-semibold uppercase transition-shadow duration-300 flex items-center justify-center gap-2 cursor-pointer text-xs xs:text-sm sm:text-base ${isDark
             ? "border-white hover:shadow-[-4px_4px_4px_white]"
             : "border-black hover:shadow-[-4px_4px_4px_black]"
             }`}

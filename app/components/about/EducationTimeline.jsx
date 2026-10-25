@@ -8,13 +8,9 @@ export default function EducationTimeline() {
       <h4 className="text-2xl font-semibold mb-4 mt-6 text-fg">My Education</h4>
 
       <div className="flex flex-col md:grid grid-cols-12 relative">
-        <motion.div 
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden md:block col-start-1 col-end-2 absolute -top-3 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
-        >
+        <div className="hidden md:block col-start-1 col-end-2 absolute -top-3 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl animate-bob">
           ▲
-        </motion.div>
+        </div>
 
         {educationData.map((item, index) => (
           <motion.div
@@ -62,13 +58,12 @@ export default function EducationTimeline() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-full bg-[#ffe31f]" />
         </div>
 
-        <motion.div 
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden md:block col-start-1 col-end-2 absolute -bottom-2.5 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl"
+        <div
+          style={{ '--bob-distance': '10px' }}
+          className="hidden md:block col-start-1 col-end-2 absolute -bottom-2.5 left-1/2 -translate-x-1/2 text-[#ffe31f] text-xl animate-bob"
         >
           ▼
-        </motion.div>
+        </div>
       </div>
     </motion.div>
   );

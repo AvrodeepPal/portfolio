@@ -4,7 +4,7 @@ import AboutHeader from './AboutHeader';
 import AboutContent from './AboutContent';
 import { animationVariants } from '@/app/assets/data/educationData';
 
-export default function About({ isDark }) {
+export default function About() {
   return (
     <div id="about" className="bg-bg z-20 w-full px-4 sm:px-8 md:px-[12%] py-20 scroll-mt-0">
       <motion.div

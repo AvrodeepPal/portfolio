@@ -4,14 +4,7 @@ export const useNavbar = (isDark, setDark) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const toggleDarkMode = (checked) => {
-    setDark(checked);
-    if (checked) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
+  const toggleDarkMode = (checked) => setDark(checked);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -49,9 +42,9 @@ export const useNavbar = (isDark, setDark) => {
     sections.forEach((section) => observer.observe(section));
 
     // Set initial active section
-    const handleScroll = () => {
+    const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 100; // Account for navbar
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section.offsetTop <= scrollPosition) {
@@ -61,13 +54,24 @@ export const useNavbar = (isDark, setDark) => {
       }
     };
 
-    handleScroll();
-    
-    window.addEventListener('scroll', handleScroll);
+    // Read layout at most once per frame instead of on every scroll event.
+    let frame = 0;
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        updateActiveSection();
+      });
+    };
+
+    updateActiveSection();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       sections.forEach((section) => observer.unobserve(section));
       window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(frame);
     };
   }, []);
 

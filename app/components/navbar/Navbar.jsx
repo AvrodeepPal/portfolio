@@ -1,14 +1,17 @@
+'use client';
 import Image from 'next/image';
 import React from 'react';
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { Divide as Hamburger } from 'hamburger-react';
 import { assets } from '../../assets/home/assets';
 import { useNavbar } from '../../assets/hooks/useNavbar';
 import { brandConfig, styleConstants } from '../../assets/data/navbarData';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from '../ThemeProvider';
 
-const Navbar = ({ isDark, setDark }) => {
+const Navbar = () => {
+  const { isDark, setDark } = useTheme();
   const {
     mobileMenuOpen,
     activeSection,
@@ -47,12 +50,11 @@ const Navbar = ({ isDark, setDark }) => {
         <div className={`flex items-center justify-center p-3 xs:p-3 rounded-full 
                        ${glassBackground.light} ${glassBackground.dark} 
                        backdrop-blur-[10px] shadow-sm transition-all ${glassBackground.hoverLight} ${glassBackground.hoverDark}`}>
-          <DarkModeSwitch
+          <ThemeToggle
             checked={isDark}
             onChange={toggleDarkMode}
             size={24}
-            moonColor={colors.accent}
-            sunColor={colors.accent}
+            color={colors.accent}
           />
         </div>
 

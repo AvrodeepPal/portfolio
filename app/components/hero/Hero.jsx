@@ -3,8 +3,10 @@ import React from "react";
 import HeroBackground from "./HeroBackground";
 import HeroContent from "./HeroContent";
 import Connection from "./Connection";
+import { useTheme } from "../ThemeProvider";
 
-const Hero = ({ isDark }) => {
+const Hero = () => {
+  const { isDark } = useTheme();
   return (
     <HeroBackground isDark={isDark}>
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 px-4">

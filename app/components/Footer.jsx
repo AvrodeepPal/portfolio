@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { assets, footerSocialLinks } from '@/app/assets/home/assets';
+import { useTheme } from './ThemeProvider';
 
-export default function Footer({ isDark }) {
+export default function Footer() {
+  const { isDark } = useTheme();
   const getIconSrc = (social) => {
     return isDark ? social.iconLight : social.iconDark;
   };

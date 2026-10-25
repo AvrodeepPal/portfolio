@@ -11,25 +11,25 @@ const TrueFocus = ({
   showAnd = false,
 }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   const words = Array.isArray(sentence) ? sentence : sentence.split(" ");
 
   useEffect(() => {
     if (words.length === 0) return;
 
+    let timeout;
     const animateNextWord = () => {
-      setIsAnimating(true);
-      
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-        setIsAnimating(false);
       }, animationDuration * 1000);
     };
 
     const interval = setInterval(animateNextWord, (animationDuration + pauseBetweenAnimations) * 1000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, [words.length, animationDuration, pauseBetweenAnimations]);
 
   return (
@@ -37,7 +37,7 @@ const TrueFocus = ({
       {words.map((word, index) => (
         <React.Fragment key={index}>
           <motion.span
-            className={`inline-block font-semibold transition-all duration-300 ${
+            className={`inline-block font-semibold transition-[color,filter,border-color,box-shadow,text-shadow] duration-300 ${
               index === currentWordIndex ? "text-[#fdd700]" : "text-fg/60"
             }`}
             style={{

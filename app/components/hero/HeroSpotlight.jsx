@@ -21,15 +21,9 @@ export const Spotlight = ({
       transition={{ duration: 1.5 }}
       className="pointer-events-none absolute inset-0 h-full w-full"
     >
-      <motion.div
-        animate={{ x: [0, xOffset, 0] }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
-        className="absolute top-0 left-0 w-screen h-screen pointer-events-none"
+      <div
+        style={{ "--spotlight-drift": `${xOffset}px`, animationDuration: `${duration}s` }}
+        className="absolute top-0 left-0 w-screen h-screen pointer-events-none animate-spotlight-drift"
       >
         <div
           style={{
@@ -60,17 +54,11 @@ export const Spotlight = ({
           }}
           className="absolute top-0 left-0 origin-top-left"
         />
-      </motion.div>
+      </div>
 
-      <motion.div
-        animate={{ x: [0, -xOffset, 0] }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
-        className="absolute top-0 right-0 w-screen h-screen pointer-events-none"
+      <div
+        style={{ "--spotlight-drift": `${-xOffset}px`, animationDuration: `${duration}s` }}
+        className="absolute top-0 right-0 w-screen h-screen pointer-events-none animate-spotlight-drift"
       >
         <div
           style={{
@@ -101,7 +89,7 @@ export const Spotlight = ({
           }}
           className="absolute top-0 right-0 origin-top-right"
         />
-      </motion.div>
+      </div>
     </motion.div>
   );
 };

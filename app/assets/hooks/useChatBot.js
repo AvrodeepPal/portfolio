@@ -47,14 +47,14 @@ export const useChatBot = () => {
   const conversationRef = useRef(0); // bumped on clear, so late replies are dropped
   const loadedRef = useRef(false);
 
+  // Fires only when the breakpoint is crossed, not on every resize event.
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < chatBotConfig.dimensions.mobile.breakpoint);
-    };
-    
+    const query = window.matchMedia(`(max-width: ${chatBotConfig.dimensions.mobile.breakpoint - 0.02}px)`);
+    const checkMobile = () => setIsMobile(query.matches);
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    query.addEventListener('change', checkMobile);
+    return () => query.removeEventListener('change', checkMobile);
   }, []);
 
   useEffect(() => {
@@ -70,7 +70,8 @@ export const useChatBot = () => {
   }, [isMobile, isOpen]);
 
   // Restore history, then fetch the greeting and window policy. The /version
-  // call also wakes a sleeping Render instance as soon as the page loads.
+  // call also wakes a sleeping Render instance; it waits for the browser to go
+  // idle so it doesn't compete with the page's own loading.
   useEffect(() => {
     const saved = loadSaved();
     if (saved) {
@@ -84,7 +85,7 @@ export const useChatBot = () => {
 
     if (!chatApiConfig.baseUrl) return;
     const controller = new AbortController();
-    fetch(`${chatApiConfig.baseUrl}/version`, { cache: "no-store", signal: controller.signal })
+    const fetchVersion = () => fetch(`${chatApiConfig.baseUrl}/version`, { cache: "no-store", signal: controller.signal })
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (!data) return;
@@ -105,7 +106,19 @@ export const useChatBot = () => {
         }
       })
       .catch(() => {});
-    return () => controller.abort();
+
+    let cancelIdle;
+    if (window.requestIdleCallback) {
+      const id = window.requestIdleCallback(fetchVersion, { timeout: 2000 });
+      cancelIdle = () => window.cancelIdleCallback(id);
+    } else {
+      const id = setTimeout(fetchVersion, 1000);
+      cancelIdle = () => clearTimeout(id);
+    }
+    return () => {
+      cancelIdle();
+      controller.abort();
+    };
   }, []);
 
   const persist = useCallback((nextMessages) => {

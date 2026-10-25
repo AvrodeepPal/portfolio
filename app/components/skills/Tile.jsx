@@ -58,7 +58,7 @@ const Tile = ({ name, image, index }) => {
       className="bg-transparent backdrop-blur-sm bg-[linear-gradient(120deg,rgba(255,255,255,0.5),rgba(255,225,220,0.05))] 
                 p-2 rounded-xl shadow-[3px_3px_0_#fdd017] flex-shrink-0 overflow-hidden cursor-pointer
                 w-[96px] h-[96px] flex flex-col items-center justify-center
-                border border-border transition-transform duration-200 transform hover:-translate-y-1.5"
+                border border-border transition-[translate] duration-200 hover:-translate-y-1.5"
     >
       <motion.div
         variants={imageVariants}
