@@ -56,7 +56,7 @@ export default function ChatForm({ onSend, isDark = false, isMobile = false, isB
             absolute right-2 bottom-2 w-10 h-10 rounded-xl flex items-center justify-center
             transition-all duration-200
             focus:outline-none focus:ring-2 focus:ring-[${chatBotConfig.colors.primary}]/50 focus:ring-offset-2
-            ${isDark ? "focus:ring-offset-slate-800/60" : "focus:ring-offset-white/80"}
+            ${isDark ? "focus:ring-offset-neutral-800/60" : "focus:ring-offset-white/80"}
             ${isDisabled
               ? `opacity-40 cursor-not-allowed ${isDark ? "bg-gray-600" : "bg-gray-300"}`
               : `bg-[${chatBotConfig.colors.primary}] hover:bg-[${chatBotConfig.colors.primaryHover}] active:bg-[${chatBotConfig.colors.primaryActive}] cursor-pointer transform hover:scale-110 active:scale-95 shadow-md hover:shadow-lg`}

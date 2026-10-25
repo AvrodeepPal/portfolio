@@ -115,7 +115,7 @@ export default function ChatWindow({
               <div
                 className={`
                   px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm
-                  ${isDark ? "bg-slate-800/70 text-gray-300" : "bg-white/90 text-gray-600"}
+                  ${isDark ? "bg-neutral-800/70 text-gray-300" : "bg-white/90 text-gray-600"}
                   border border-[#FDD000]/30
                 `}
               >

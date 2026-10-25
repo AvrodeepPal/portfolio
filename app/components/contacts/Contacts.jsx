@@ -29,7 +29,7 @@ export default function Contact() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-100px" }}
+          viewport={{ once: true, margin: "-100px" }}
           variants={animationVariants.staggerContainer}
         >
           <div className="text-center max-w-3xl mx-auto mb-12">

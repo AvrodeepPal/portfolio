@@ -17,7 +17,7 @@ export default function EducationTimeline() {
             key={index}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{
               duration: 0.6,
               delay: index * 0.3,

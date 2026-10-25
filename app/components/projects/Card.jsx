@@ -111,7 +111,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
             key={techIndex}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{
               duration: 0.3,
               delay: index * 0.1 + 0.4 + techIndex * 0.05,

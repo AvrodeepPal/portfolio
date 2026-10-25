@@ -108,13 +108,13 @@ export const chatStyles = {
       }
     },
     dark: {
-      chat: "bg-slate-900/90",
+      chat: "bg-neutral-900/90",
       message: {
-        bot: "bg-slate-800/80 hover:bg-slate-800/90"
+        bot: "bg-neutral-800/80 hover:bg-neutral-800/90"
       },
       form: {
-        container: "bg-slate-800/60 border-slate-600/30 focus-within:border-[#FDD000]/60",
-        footer: "border-slate-700/30 bg-slate-800/70"
+        container: "bg-neutral-800/60 border-neutral-600/30 focus-within:border-[#FDD000]/60",
+        footer: "border-neutral-700/30 bg-neutral-800/70"
       }
     }
   },

@@ -48,7 +48,7 @@ const ContactForm = ({ onSubmit, isSubmitting, errors = {}, validateField }) => 
       <motion.div 
         initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
         whileInView={{ opacity: 1, scale: 1, rotate: -6 }}
-        viewport={{ once: false, margin: "-100px" }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="absolute inset-0 bg-gradient-to-r from-[#ffe31f] to-[#ff1e1e] shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl z-0"
       />
@@ -56,7 +56,7 @@ const ContactForm = ({ onSubmit, isSubmitting, errors = {}, validateField }) => 
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false, margin: "-100px" }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5, delay: 0.4 }}
         className="relative z-10 bg-card rounded-3xl p-6 md:p-10 shadow-xl border border-border"
       >

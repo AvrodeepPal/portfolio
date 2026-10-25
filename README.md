@@ -1,6 +1,6 @@
 # 🌟 Avrodeep Pal - Portfolio
 
-A modern, interactive portfolio showcasing my journey as a Computer Science student and aspiring developer. Built with cutting-edge web technologies and featuring smooth animations, dark/light themes and responsive design.
+A modern, interactive portfolio showcasing my work as a software engineer building AI systems. It comes with smooth animations, dark/light themes, a responsive layout and **AStarBot**, an AI assistant that answers questions about me.
 
 ## 🚀 Live Demo
 
@@ -8,7 +8,7 @@ A modern, interactive portfolio showcasing my journey as a Computer Science stud
 
 ## 📋 About
 
-I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur University with a passion for AI/ML, web development and problem-solving. This portfolio represents my technical skills, academic achievements and project work.
+I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur University. I work on LLM infrastructure (RAG pipelines, agent workflows, model serving), and my independent research is on reasoning models. This portfolio covers my experience, skills, academic record and project work.
 
 **Key Highlights:**
 - 🎓 WBSU Rank 1 in Bachelor's (CGPA: 9.91/10.0)
@@ -19,39 +19,52 @@ I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur Univer
 ## ✨ Features
 
 - **Modern Design**: Clean, professional UI with smooth animations
-- **Dark/Light Theme**: Toggle between themes with system preference detection
-- **Fully Responsive**: Optimized for all device sizes
-- **Interactive Elements**: 3D animations, hover effects and micro-interactions
+- **Dark/Light Theme**: Toggle between themes with system preference detection, applied before first paint so there's no flash
+- **Fully Responsive**: Optimized for all device sizes, including a full-screen chat on mobile
+- **AStarBot Chat**: An AI assistant that streams answers about my background, backed by the [AStarBot](https://github.com/AvrodeepPal/AStarBot) RAG API
+- **Interactive Elements**: Scroll-in animations (played once), glowing card borders, hover effects and micro-interactions
 - **Contact Form**: Functional contact form with validation
-- **Performance Optimized**: Fast loading with optimized assets
+- **Performance Optimized**: Lazy-loaded chat, right-sized responsive images, and CSS-driven ambient animations
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework**: Next.js 14 (React 18)
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **3D Graphics**: Three.js with React Three Fiber
-- **Icons**: React Icons, Lucide React
+- **Framework**: Next.js 15 App Router (React 19)
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion, plus CSS keyframes for looping effects
+- **Fonts**: Poppins via `next/font`
+- **Chat Rendering**: react-markdown + remark-gfm (loaded only when the chat opens)
+- **Forms**: Web3Forms
+- **Icons**: React Icons
 
 ### Development Tools
-- **Language**: JavaScript/TypeScript
-- **Package Manager**: npm/yarn
+- **Language**: JavaScript
+- **Package Manager**: npm
 - **Version Control**: Git
-- **Deployment**: Vercel/Netlify
+- **Deployment**: Vercel (frontend), with the AStarBot API on Render
 
 ## 🏗️ Project Structure
 
 ```
 ├── app/
+│   ├── layout.js          # Root layout, fonts, pre-paint theme script
+│   ├── page.js            # Home page (server component)
+│   ├── globals.css        # Theme variables, Tailwind, CSS animations
 │   ├── components/
-│   │   ├── home/          # Hero section components
-│   │   ├── about/         # About section with education timeline
+│   │   ├── ThemeProvider.jsx  # Dark/light theme state shared via context
+│   │   ├── navbar/        # Navbar, mobile menu, theme toggle
+│   │   ├── hero/          # Hero section, TrueFocus, ShinyText, spotlight
+│   │   ├── experience/    # Work timeline and cards
 │   │   ├── skills/        # Skills showcase with animations
 │   │   ├── projects/      # Project cards and details
-│   │   └── contacts/      # Contact form and info
-│   ├── assets/            # Static assets and data
-│   └── hooks/             # Custom React hooks
+│   │   ├── about/         # About section with education timeline
+│   │   ├── contacts/      # Contact form and info
+│   │   ├── chatbot/       # AStarBot launcher and lazy-loaded chat window
+│   │   └── ui/            # Shared effects (GlowingEffect)
+│   └── assets/
+│       ├── data/          # Section content and config
+│       ├── hooks/         # Custom React hooks (chat, navbar, contact form)
+│       └── */             # Images and icons per section
 ├── public/                # Public assets
 └── README.md
 ```
@@ -77,14 +90,22 @@ I'm Avrodeep Pal, a Master's student in Computer Applications at Jadavpur Univer
    yarn install
    ```
 
-3. **Run development server**
+3. **Point the chat at the AStarBot API** (optional)
+
+   Create `.env.local` in the project root:
+   ```bash
+   NEXT_PUBLIC_ASTARBOT_API_URL=https://your-astarbot-api.example.com
+   ```
+   Without it the site still runs, and the chat replies that its backend isn't configured. The API must list this site's origin in its `FRONTEND_ORIGIN`.
+
+4. **Run development server**
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:3000`
 
 ### Build for Production
@@ -97,10 +118,12 @@ npm start
 ## 📱 Sections
 
 - **Hero**: Dynamic introduction with animated text and social links
-- **About**: Personal introduction with education timeline
+- **Experience**: Work timeline with role highlights and tech stack
 - **Skills**: Technical skills organized by categories
 - **Projects**: Showcase of major projects with live demos
+- **About**: Personal introduction with education timeline
 - **Contact**: Functional contact form with validation
+- **AStarBot**: Floating chat assistant, available on every section
 
 ## 🎨 Key Components
 
@@ -109,12 +132,21 @@ npm start
 - **Connection**: Rotating social media links
 - **EducationTimeline**: Interactive timeline with hover effects
 - **ContactForm**: Form with real-time validation and submission
+- **ChatBot / ChatWindow**: Chat launcher; the window (and its Markdown renderer) loads on first hover or tap
+- **GlowingEffect**: Pointer-tracking border glow that only listens while its card is on screen
+- **ThemeToggle**: Animated sun/moon switch built with plain SVG and CSS
 
 ## 📊 Featured Projects
 
-1. **Let's Connect! v2.5** - AI-driven campus recruitment platform
-2. **Stock Price Prediction** - LSTM model with 94.60% accuracy
-3. **Star Emporium v1.48** - Java-based e-book management system
+- **Cross Lingual Semantics**
+- **LLMs Practice**
+- **Fraud Detection EDA** - Transaction Analysis
+- **Credit Risk EDA** - Loan Approval
+- **Let's Connect!** - AI-driven campus recruitment platform
+- **Time Series Analysis** - LSTM stock price forecasting
+- **Star Emporium** - Java-based e-book management system
+
+Details and links are in the Projects section of the live site.
 
 ## 🤝 Contributing
 
