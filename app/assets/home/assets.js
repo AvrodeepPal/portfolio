@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import photo from './photo.png';
+import photo from './photo.webp';
 import location from './location.svg';
 import calling from './calling.svg';
 import email from './email.svg';

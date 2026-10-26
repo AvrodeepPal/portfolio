@@ -82,7 +82,7 @@ export default function Skills() {
           }}
           className="text-left flex flex-col gap-8 py-6"
         >
-          {skillSections.map((section, sectionIndex) => (
+          {skillSections.map((section) => (
             <motion.div
               key={section.title}
               variants={{
@@ -96,6 +96,9 @@ export default function Skills() {
                   }
                 }
               }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
               className="flex flex-col md:flex-row gap-6 items-start"
             >
               <motion.h3 
@@ -117,12 +120,11 @@ export default function Skills() {
                 }}
                 className="flex flex-wrap gap-3 sm:gap-4"
               >
-                {section.skills.map((skill, index) => (
+                {section.skills.map((skill) => (
                   <Tile 
-                    key={index} 
-                    name={skill.name} 
-                    image={skill.image} 
-                    index={index + sectionIndex * 10}
+                    key={skill.name}
+                    name={skill.name}
+                    icon={skill.icon}
                   />
                 ))}
               </motion.div>

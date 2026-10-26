@@ -90,6 +90,7 @@ const Card = ({ title, image, description, lang, isLive, code, live, index }) =>
           fill
           className="object-cover rounded-lg"
           sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          placeholder="blur"
         />
       </motion.div>
 

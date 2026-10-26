@@ -1,149 +1,90 @@
-// ---------- Languages ----------
-import clang from './svg/C.svg';
-import cpp from './svg/C++-(CPlusPlus).svg';
-import java from './svg/Java.svg';
-import python from './svg/Python.svg';
-import javascript from './svg/JavaScript.svg';
-import bash from './svg/Bash.svg';
-import rlang from './svg/R-.svg';
-import prolog from './prolog.svg';
-
-// ---------- AI / ML ----------
-import pytorch from './svg/PyTorch.svg';
-import tensorflow from './svg/TensorFlow.svg';
-import keras from './svg/Keras.svg';
-import opencv from './svg/OpenCV.svg';
-import sklearn from './scikit-learn.svg';
-import huggingface from './huggingface.svg';
-import cuda from './cuda.svg';
-
-// ---------- LLM & RAG ----------
-import langchain from './langchain.svg';
-import langgraph from './langgraph.svg';
-import pineconedb from './pineconedb.svg';
-import chromadb from './chromadb.svg';
-
-// ---------- Infra ----------
-import fastapi from './svg/FastAPI.svg';
-import docker from './svg/Docker.svg';
-import nginx from './svg/NGINX.svg';
-import postgresql from './svg/PostgresSQL.svg';
-import redis from './svg/Redis.svg';
-import aws from './svg/AWS.svg';
-
-// ---------- WebDev ----------
-import reactjs from './svg/React.svg';
-import nextjs from './svg/Next.js.svg';
-import node from './svg/Node.js.svg';
-import tailwind from './svg/Tailwind-CSS.svg';
-import html from './svg/HTML5.svg';
-import css from './svg/CSS3.svg';
-import mongodb from './svg/MongoDB.svg';
-import supabase from './supabase.svg';
-
-// ---------- Data & Tools ----------
-import pandas from './svg/Pandas.svg';
-import numpy from './svg/NumPy.svg';
-import matplotlib from './svg/Matplotlib.svg';
-import jupyter from './svg/Jupyter.svg';
-import rstudio from './svg/RStudio.svg';
-import git from './svg/Git.svg';
-import github from './svg/GitHub.svg';
-import vscode from './svg/Visual-Studio-Code-(VS-Code).svg';
-import postman from './svg/Postman.svg';
-import linux from './svg/Linux.svg';
-
-// ---------- Platforms ----------
-import vercel from './svg/Vercel.svg';
-import streamlit from './svg/Streamlit.svg';
-import kaggle from './svg/Kaggle.svg';
-import netlify from './netlify.svg';
+// Each skill's `icon` is a symbol id in public/skills-sprite.svg (see icons.mjs and `npm run sprite`).
 
 // ================================================================
 // SECTION 1 — Coding
 // ================================================================
 export const coding = [
-  { name: 'C', image: clang },
-  { name: 'C++', image: cpp },
-  { name: 'Java', image: java },
-  { name: 'Python', image: python },
-  { name: 'JavaScript', image: javascript },
-  { name: 'Bash', image: bash },
-  { name: 'R', image: rlang },
-  { name: 'Prolog', image: prolog }
+  { name: 'C', icon: 'c' },
+  { name: 'C++', icon: 'cpp' },
+  { name: 'Java', icon: 'java' },
+  { name: 'Python', icon: 'python' },
+  { name: 'JavaScript', icon: 'javascript' },
+  { name: 'Bash', icon: 'bash' },
+  { name: 'R', icon: 'r' },
+  { name: 'Prolog', icon: 'prolog' }
 ];
 
 // ================================================================
 // SECTION 2 — AI & Machine Learning
 // ================================================================
 export const aiml = [
-  { name: 'PyTorch', image: pytorch },
-  { name: 'TensorFlow', image: tensorflow },
-  { name: 'Keras', image: keras },
-  { name: 'scikit-learn', image: sklearn },
-  { name: 'OpenCV', image: opencv },
-  { name: 'Hugging Face', image: huggingface },
-  { name: 'CUDA', image: cuda }
+  { name: 'PyTorch', icon: 'pytorch' },
+  { name: 'TensorFlow', icon: 'tensorflow' },
+  { name: 'Keras', icon: 'keras' },
+  { name: 'scikit-learn', icon: 'sklearn' },
+  { name: 'OpenCV', icon: 'opencv' },
+  { name: 'Hugging Face', icon: 'huggingface' },
+  { name: 'CUDA', icon: 'cuda' }
 ];
 
 // ================================================================
 // SECTION 3 — LLM & RAG
 // ================================================================
 export const llmrag = [
-  { name: 'LangChain', image: langchain },
-  { name: 'LangGraph', image: langgraph },
-  { name: 'Pinecone', image: pineconedb },
-  { name: 'ChromaDB', image: chromadb }
+  { name: 'LangChain', icon: 'langchain' },
+  { name: 'LangGraph', icon: 'langgraph' },
+  { name: 'Pinecone', icon: 'pinecone' },
+  { name: 'ChromaDB', icon: 'chromadb' }
 ];
 
 // ================================================================
 // SECTION 4 — Infra
 // ================================================================
 export const infra = [
-  { name: 'FastAPI', image: fastapi },
-  { name: 'Docker', image: docker },
-  { name: 'Nginx', image: nginx },
-  { name: 'PostgreSQL', image: postgresql },
-  { name: 'Redis', image: redis },
-  { name: 'AWS', image: aws }
+  { name: 'FastAPI', icon: 'fastapi' },
+  { name: 'Docker', icon: 'docker' },
+  { name: 'Nginx', icon: 'nginx' },
+  { name: 'PostgreSQL', icon: 'postgresql' },
+  { name: 'Redis', icon: 'redis' },
+  { name: 'AWS', icon: 'aws' }
 ];
 
 // ================================================================
 // SECTION 5 — WebDev
 // ================================================================
 export const webdev = [
-  { name: 'React.js', image: reactjs },
-  { name: 'Next.js', image: nextjs },
-  { name: 'Node.js', image: node },
-  { name: 'Tailwind CSS', image: tailwind },
-  { name: 'HTML', image: html },
-  { name: 'CSS', image: css },
-  { name: 'MongoDB', image: mongodb },
-  { name: 'Supabase', image: supabase }
+  { name: 'React.js', icon: 'react' },
+  { name: 'Next.js', icon: 'nextjs' },
+  { name: 'Node.js', icon: 'node' },
+  { name: 'Tailwind CSS', icon: 'tailwind' },
+  { name: 'HTML', icon: 'html' },
+  { name: 'CSS', icon: 'css' },
+  { name: 'MongoDB', icon: 'mongodb' },
+  { name: 'Supabase', icon: 'supabase' }
 ];
 
 // ================================================================
 // SECTION 6 — Data & Tools
 // ================================================================
 export const dataTools = [
-  { name: 'pandas', image: pandas },
-  { name: 'NumPy', image: numpy },
-  { name: 'Matplotlib', image: matplotlib },
-  { name: 'Jupyter', image: jupyter },
-  { name: 'RStudio', image: rstudio },
-  { name: 'Git', image: git },
-  { name: 'GitHub', image: github },
-  { name: 'VS Code', image: vscode },
-  { name: 'Postman', image: postman },
-  { name: 'Linux', image: linux }
+  { name: 'pandas', icon: 'pandas' },
+  { name: 'NumPy', icon: 'numpy' },
+  { name: 'Matplotlib', icon: 'matplotlib' },
+  { name: 'Jupyter', icon: 'jupyter' },
+  { name: 'RStudio', icon: 'rstudio' },
+  { name: 'Git', icon: 'git' },
+  { name: 'GitHub', icon: 'github' },
+  { name: 'VS Code', icon: 'vscode' },
+  { name: 'Postman', icon: 'postman' },
+  { name: 'Linux', icon: 'linux' }
 ];
 
 // ================================================================
 // SECTION 7 — Platforms
 // ================================================================
 export const platforms = [
-  { name: 'Vercel', image: vercel },
-  { name: 'Streamlit', image: streamlit },
-  { name: 'Kaggle', image: kaggle },
-  { name: 'Netlify', image: netlify }
+  { name: 'Vercel', icon: 'vercel' },
+  { name: 'Streamlit', icon: 'streamlit' },
+  { name: 'Kaggle', icon: 'kaggle' },
+  { name: 'Netlify', icon: 'netlify' }
 ];

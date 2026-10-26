@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sprite": "node scripts/build-sprite.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.23.6",

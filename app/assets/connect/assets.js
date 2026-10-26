@@ -1,4 +1,4 @@
-import avro_star from './favicon.png';
+import avro_star from './favicon.webp';
 import linkedin from './linkedin.svg';
 import github_dark from './github-dark.svg';
 import github_light from './github-light.svg';

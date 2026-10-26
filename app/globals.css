@@ -270,6 +270,17 @@ h6 {
   .text-working {
     color: var(--working);
   }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  /* Skip layout/paint of text-heavy cards until they near the viewport.
+     `auto` makes the browser remember the real height once it has rendered. */
+  .optimize-render {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
 }
 
 /* "Working" status dot */

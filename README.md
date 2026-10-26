@@ -24,7 +24,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 - **AStarBot Chat**: An AI assistant that streams answers about my background, backed by the [AStarBot](https://github.com/AvrodeepPal/AStarBot) RAG API
 - **Interactive Elements**: Scroll-in animations (played once), glowing card borders, hover effects and micro-interactions
 - **Contact Form**: Functional contact form with validation
-- **Performance Optimized**: Lazy-loaded chat, right-sized responsive images, and CSS-driven ambient animations
+- **Performance Optimized**: Lazy-loaded chat, WebP source images served as AVIF/WebP through `next/image` (with `sizes` and blur placeholders), a single SVG sprite for all skill icons, section-by-section scroll reveals, collapsible experience highlights with `content-visibility: auto` on the cards, a one-year image cache TTL, and CSS-driven ambient animations
 
 ## 🛠️ Tech Stack
 
@@ -54,8 +54,8 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 │   │   ├── ThemeProvider.jsx  # Dark/light theme state shared via context
 │   │   ├── navbar/        # Navbar, mobile menu, theme toggle
 │   │   ├── hero/          # Hero section, TrueFocus, ShinyText, spotlight
-│   │   ├── experience/    # Work timeline and cards
-│   │   ├── skills/        # Skills showcase with animations
+│   │   ├── experience/    # Work timeline and cards (collapsible highlights)
+│   │   ├── skills/        # Skills showcase (sprite-based icons, per-section reveal)
 │   │   ├── projects/      # Project cards and details
 │   │   ├── about/         # About section with education timeline
 │   │   ├── contacts/      # Contact form and info
@@ -64,8 +64,10 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 │   └── assets/
 │       ├── data/          # Section content and config
 │       ├── hooks/         # Custom React hooks (chat, navbar, contact form)
-│       └── */             # Images and icons per section
-├── public/                # Public assets
+│       └── */             # Images (WebP) and icons (SVG) per section, imported statically
+├── public/                # Public assets, incl. generated skills-sprite.svg
+├── scripts/               # build-sprite.mjs: packs skill icons into the sprite
+├── next.config.mjs        # Image formats (AVIF/WebP) and cache TTL
 └── README.md
 ```
 
@@ -115,10 +117,24 @@ npm run build
 npm start
 ```
 
+### Images
+
+All images are bundled with the app as static imports, so they are served from Vercel's edge network and need no remote-image configuration. Keep new raster images as `.webp` (about 1600px wide for screenshots) and render them with `next/image`, setting `sizes` for responsive layouts and `placeholder="blur"` for large images. Static imports get their blur placeholder generated automatically at build time.
+
+### Skill icon sprite
+
+The Skills section draws its ~47 icons from one sprite (`public/skills-sprite.svg`) via `<use>`, so it costs one cached request instead of one per icon. The icon list lives in `app/assets/skills/icons.mjs`. After adding or changing an icon, run:
+
+```bash
+npm run sprite
+```
+
+This regenerates the sprite, namespaces gradient ids so icons don't clash, and updates `app/assets/skills/sprite-version.js` (a content hash used as a cache-buster). Then reference the new icon id from `app/assets/skills/assets.js`. Commit the generated files.
+
 ## 📱 Sections
 
 - **Hero**: Dynamic introduction with animated text and social links
-- **Experience**: Work timeline with role highlights and tech stack
+- **Experience**: Work timeline with tech stack and role highlights. Every highlight shows its headline and first two lines, and "Show more" expands the full text
 - **Skills**: Technical skills organized by categories
 - **Projects**: Showcase of major projects with live demos
 - **About**: Personal introduction with education timeline
@@ -133,6 +149,7 @@ npm start
 - **EducationTimeline**: Interactive timeline with hover effects
 - **ContactForm**: Form with real-time validation and submission
 - **ChatBot / ChatWindow**: Chat launcher; the window (and its Markdown renderer) loads on first hover or tap
+- **HighlightList**: Experience highlights clamped with CSS `line-clamp` until "Show more" is pressed. The preview length is `highlightPreviewLines` in `experienceData.js`
 - **GlowingEffect**: Pointer-tracking border glow that only listens while its card is on screen
 - **ThemeToggle**: Animated sun/moon switch built with plain SVG and CSS
 

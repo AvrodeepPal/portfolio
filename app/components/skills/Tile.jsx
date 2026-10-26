@@ -1,9 +1,9 @@
 'use client';
-import Image from 'next/image';
+import { SPRITE_URL } from '@/app/assets/skills/sprite-version';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Tile = ({ name, image, index }) => {
+const Tile = ({ name, icon }) => {
   const tileVariants = {
     hidden: {
       opacity: 0,
@@ -16,8 +16,7 @@ const Tile = ({ name, image, index }) => {
       scale: 1,
       transition: {
         duration: 0.4,
-        ease: "easeOut",
-        delay: index * 0.05
+        ease: "easeOut"
       }
     }
   };
@@ -29,8 +28,7 @@ const Tile = ({ name, image, index }) => {
       opacity: 1,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
-        delay: index * 0.05
+        ease: "easeOut"
       }
     }
   };
@@ -42,17 +40,13 @@ const Tile = ({ name, image, index }) => {
       y: 0,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
-        delay: index * 0.05
+        ease: "easeOut"
       }
     }
   };
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
       variants={tileVariants}
       whileTap={{ scale: 0.95 }}
       className="bg-transparent backdrop-blur-sm bg-[linear-gradient(120deg,rgba(255,255,255,0.5),rgba(255,225,220,0.05))] 
@@ -64,13 +58,14 @@ const Tile = ({ name, image, index }) => {
         variants={imageVariants}
         className="flex items-center justify-center h-11"
       >
-        <Image
-          src={image}
-          alt={name}
-          width={40}
-          height={40}
-          className="w-10 h-10 object-contain"
-        />
+        <svg
+          role="img"
+          aria-label={name}
+          viewBox="0 0 40 40"
+          className="w-10 h-10"
+        >
+          <use href={`${SPRITE_URL}#${icon}`} width="40" height="40" />
+        </svg>
       </motion.div>
 
       <motion.div

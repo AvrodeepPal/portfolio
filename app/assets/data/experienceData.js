@@ -18,7 +18,9 @@ import { companyLogos } from '@/app/assets/experience/assets';
  *    location     city, country (the `type` is appended when displayed)
  *    duration     { start, end, label }  — use end: 'Present' for current role
  *    technologies string[] — rendered as chips
- *    highlights   [{ title, description }] — description supports **bold** spans
+ *    highlights   [{ title, description }] — description supports **bold** spans.
+ *                 Each point is clamped to `highlightPreviewLines` lines until
+ *                 "Show more" is clicked, so lead with the key result.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 export const experiences = [
@@ -125,6 +127,9 @@ export const companyLinkIcon = {
   glyph: '\u{1F310}',
   label: 'Visit website'
 };
+
+/** Lines each highlight shows before "Show more" expands the card (1-3). */
+export const highlightPreviewLines = 2;
 
 /** Badge shown beside the current company name. */
 export const workingBadge = {

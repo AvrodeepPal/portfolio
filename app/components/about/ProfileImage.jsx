@@ -30,6 +30,7 @@ export default function ProfileImage() {
           alt="Profile"
           className="w-full rounded-3xl object-cover shadow-xl"
           sizes="(max-width: 640px) 192px, (max-width: 768px) 240px, 320px"
+          placeholder="blur"
         />
       </div>
 

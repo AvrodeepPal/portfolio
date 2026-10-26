@@ -1,10 +1,10 @@
-import starempo from './starempo.png';
-import stockslstm from './stockslstm.png';
-import letsconnect from './letsconnect.png';
-import creditrisk from './creditriskeda.png';
-import frauddetection from './frauddetection.png';
-import llmspractice from './llmspractice.png';
-import banglasemantics from './banglasemantics.png';
+import starempo from './starempo.webp';
+import stockslstm from './stockslstm.webp';
+import letsconnect from './letsconnect.webp';
+import creditrisk from './creditriskeda.webp';
+import frauddetection from './frauddetection.webp';
+import llmspractice from './llmspractice.webp';
+import banglasemantics from './banglasemantics.webp';
 
 export const projects = [
   {

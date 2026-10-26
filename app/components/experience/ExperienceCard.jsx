@@ -26,7 +26,9 @@ const ExperienceCard = ({ experience, isDark, isCurrent }) => (
       inactiveZone={0.01}
     />
 
-    <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-5 text-left sm:p-6">
+    {/* optimize-render goes on the inner panel: it already clips overflow, so the
+        paint containment it implies can't cut off the glowing border. */}
+    <div className="optimize-render relative flex h-full flex-col overflow-hidden rounded-xl bg-card p-5 text-left sm:p-6">
       <CompanyHeader
         experience={experience}
         isDark={isDark}
