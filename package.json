@@ -10,6 +10,7 @@
     "sprite": "node scripts/build-sprite.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.23.6",
     "hamburger-react": "^2.5.2",
     "next": "15.4.10",

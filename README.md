@@ -35,6 +35,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 - **Fonts**: Poppins via `next/font`
 - **Chat Rendering**: react-markdown + remark-gfm (loaded only when the chat opens)
 - **Forms**: Web3Forms
+- **Analytics**: Vercel Web Analytics (`@vercel/analytics`)
 - **Icons**: React Icons
 
 ### Development Tools
@@ -47,7 +48,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 
 ```
 ├── app/
-│   ├── layout.js          # Root layout, fonts, pre-paint theme script
+│   ├── layout.js          # Root layout, fonts, pre-paint theme script, Vercel Analytics
 │   ├── page.js            # Home page (server component)
 │   ├── globals.css        # Theme variables, Tailwind, CSS animations
 │   ├── components/
