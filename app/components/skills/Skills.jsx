@@ -2,6 +2,7 @@
 import { coding, aiml, llmrag, infra, webdev, dataTools, platforms } from '@/app/assets/skills/assets';
 import React from 'react';
 import Tile from './Tile';
+import SkillSprite from './SkillSprite';
 import { motion } from 'framer-motion';
 
 const fadeInUp = {
@@ -40,7 +41,8 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="text-center w-full px-[8%] py-20 scroll-mt-0 bg-bg">
+    <section id="skills" className="relative text-center w-full px-[8%] py-20 scroll-mt-0 bg-bg">
+      <SkillSprite>
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -132,6 +134,7 @@ export default function Skills() {
           ))}
         </motion.div>
       </motion.div>
+      </SkillSprite>
     </section>
   );
 }

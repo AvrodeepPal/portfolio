@@ -1,6 +1,7 @@
 import './globals.css';
 import { Poppins } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,8 +29,10 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased vsc-initialized font-sans">
         {children}
-        {/* Vercel Web Analytics: page views and visitors, reported only on Vercel deployments. */}
+        {/* Vercel Web Analytics (page views, visitors) and Speed Insights (real-user
+            Core Web Vitals). Both report only from Vercel deployments. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

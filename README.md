@@ -35,7 +35,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 - **Fonts**: Poppins via `next/font`
 - **Chat Rendering**: react-markdown + remark-gfm (loaded only when the chat opens)
 - **Forms**: Web3Forms
-- **Analytics**: Vercel Web Analytics (`@vercel/analytics`)
+- **Analytics**: Vercel Web Analytics (`@vercel/analytics`) and Speed Insights (`@vercel/speed-insights`)
 - **Icons**: React Icons
 
 ### Development Tools
@@ -48,7 +48,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 
 ```
 ├── app/
-│   ├── layout.js          # Root layout, fonts, pre-paint theme script, Vercel Analytics
+│   ├── layout.js          # Root layout, fonts, pre-paint theme script, Vercel Analytics + Speed Insights
 │   ├── page.js            # Home page (server component)
 │   ├── globals.css        # Theme variables, Tailwind, CSS animations
 │   ├── components/
@@ -124,13 +124,13 @@ All images are bundled with the app as static imports, so they are served from V
 
 ### Skill icon sprite
 
-The Skills section draws its ~47 icons from one sprite (`public/skills-sprite.svg`) via `<use>`, so it costs one cached request instead of one per icon. The icon list lives in `app/assets/skills/icons.mjs`. After adding or changing an icon, run:
+The Skills section draws its ~47 icons from one sprite (`public/skills-sprite.svg`), so it costs one cached request instead of one per icon. `SkillSprite.jsx` fetches the file and inlines it into the page, and tiles reference symbols with `<use href="#id">`. Referencing the file directly (`sprite.svg#id`) breaks gradient icons in Safari. The icon list lives in `app/assets/skills/icons.mjs`. After adding or changing an icon, run:
 
 ```bash
 npm run sprite
 ```
 
-This regenerates the sprite, namespaces gradient ids so icons don't clash, and updates `app/assets/skills/sprite-version.js` (a content hash used as a cache-buster). Then reference the new icon id from `app/assets/skills/assets.js`. Commit the generated files.
+This regenerates the sprite, namespaces gradient ids so icons don't clash, hoists gradients/masks/filters into a shared `<defs>` (Safari needs this), and updates `app/assets/skills/sprite-version.js` (a content hash used as a cache-buster). Then reference the new icon id from `app/assets/skills/assets.js`. Commit the generated files.
 
 ## 📱 Sections
 

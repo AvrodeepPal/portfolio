@@ -1,5 +1,7 @@
 // Packs the skill icons into one SVG sprite (public/skills-sprite.svg) and writes
 // app/assets/skills/sprite-version.js with a content hash for cache busting.
+// SkillSprite.jsx inlines the file into the page, since Safari can't render
+// gradients through an external `<use href="file.svg#id">`.
 // Run with `npm run sprite` after adding or changing an icon in icons.mjs.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -34,12 +36,23 @@ const toSymbol = (id, file) => {
       .replaceAll(`url(#${old})`, `url(#${next})`)
       .replaceAll(`href="#${old}"`, `href="#${next}"`);
   }
-  return `<symbol id="${id}" viewBox="${viewBox}">${inner.trim()}</symbol>`;
+  // Safari won't resolve paint servers declared inside a <symbol>, so lift
+  // gradients, masks, filters and clip paths into the sprite's shared <defs>.
+  const defs = [];
+  inner = inner
+    .replace(/<(linearGradient|radialGradient|mask|filter|clipPath|pattern)\b[\s\S]*?<\/\1>/g, (el) => {
+      defs.push(el);
+      return '';
+    })
+    .replace(/<defs>\s*<\/defs>|<defs\/>/g, '');
+  return { defs: defs.join(''), symbol: `<symbol id="${id}" viewBox="${viewBox}">${inner.trim()}</symbol>` };
 };
 
+const parts = Object.entries(icons).map(([id, file]) => toSymbol(id, file));
 const sprite =
   '<svg xmlns="http://www.w3.org/2000/svg">' +
-  Object.entries(icons).map(([id, file]) => toSymbol(id, file)).join('') +
+  `<defs>${parts.map((p) => p.defs).join('')}</defs>` +
+  parts.map((p) => p.symbol).join('') +
   '</svg>\n';
 
 const hash = createHash('sha1').update(sprite).digest('hex').slice(0, 8);

@@ -1,9 +1,11 @@
 'use client';
-import { SPRITE_URL } from '@/app/assets/skills/sprite-version';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useSpriteReady } from './SkillSprite';
 
 const Tile = ({ name, icon }) => {
+  const spriteReady = useSpriteReady();
+
   const tileVariants = {
     hidden: {
       opacity: 0,
@@ -64,7 +66,7 @@ const Tile = ({ name, icon }) => {
           viewBox="0 0 40 40"
           className="w-10 h-10"
         >
-          <use href={`${SPRITE_URL}#${icon}`} width="40" height="40" />
+          {spriteReady && <use href={`#${icon}`} width="40" height="40" />}
         </svg>
       </motion.div>
 
