@@ -6,6 +6,12 @@ A modern, interactive portfolio showcasing my work as a software engineer buildi
 
 [View Portfolio](https://avrodeeppal-portfolio.vercel.app)
 
+## 🖼️ Screenshots
+
+- [Figure 1: Hero section, "LLM Infrastructure" focus](app/portfolio1.png "Figure 1: Hero section with the TrueFocus text on LLM Infrastructure")
+- [Figure 2: Hero section, "Reasoning Models" focus](app/portfolio2.png "Figure 2: Hero section with the TrueFocus text on Reasoning Models")
+- [Figure 3: AStarBot chat window open](app/portfolio3.png "Figure 3: The AStarBot chat window open over the hero section")
+
 ## 📋 About
 
 I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur University. I work on LLM infrastructure (RAG pipelines, agent workflows, model serving), and my independent research is on reasoning models. This portfolio covers my experience, skills, academic record and project work.
