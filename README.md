@@ -6,11 +6,11 @@ A modern, interactive portfolio showcasing my work as a software engineer buildi
 
 [View Portfolio](https://avrodeeppal-portfolio.vercel.app)
 
-## 🖼️ Screenshots
+<p align="center">
+  <img src="app/portfolio1.png" alt="Portfolio hero section in dark mode with the name, the TrueFocus line highlighting LLM Infrastructure, and an orbit of social links" width="850">
+</p>
 
-- [Figure 1: Hero section, "LLM Infrastructure" focus](app/portfolio1.png "Figure 1: Hero section with the TrueFocus text on LLM Infrastructure")
-- [Figure 2: Hero section, "Reasoning Models" focus](app/portfolio2.png "Figure 2: Hero section with the TrueFocus text on Reasoning Models")
-- [Figure 3: AStarBot chat window open](app/portfolio3.png "Figure 3: The AStarBot chat window open over the hero section")
+<p align="center"><em>Figure 1: The hero section in dark mode. The glass navbar sits on top, the TrueFocus line spotlights "LLM Infrastructure", the social links orbit the star logo on the right, and the AStarBot launcher waits in the corner.</em></p>
 
 ## 📋 About
 
@@ -27,10 +27,16 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 - **Modern Design**: Clean, professional UI with smooth animations
 - **Dark/Light Theme**: Toggle between themes with system preference detection, applied before first paint so there's no flash
 - **Fully Responsive**: Optimized for all device sizes, including a full-screen chat on mobile
-- **AStarBot Chat**: An AI assistant that streams answers about my background, backed by the [AStarBot](https://github.com/AvrodeepPal/AStarBot) RAG API
+- **AStarBot Chat**: An AI assistant that streams answers about my background, backed by the [AStarBot](https://github.com/AvrodeepPal/AStarBot) RAG API (**Figure 2**)
 - **Interactive Elements**: Scroll-in animations (played once), glowing card borders, hover effects and micro-interactions
 - **Contact Form**: Functional contact form with validation
 - **Performance Optimized**: Lazy-loaded chat, WebP source images served as AVIF/WebP through `next/image` (with `sizes` and blur placeholders), a single SVG sprite for all skill icons, section-by-section scroll reveals, collapsible experience highlights with `content-visibility: auto` on the cards, a one-year image cache TTL, and CSS-driven ambient animations
+
+<p align="center">
+  <img src="app/portfolio3.png" alt="AStarBot chat window open over the hero section, showing the bot's greeting and the message box" width="850">
+</p>
+
+<p align="center"><em>Figure 2: AStarBot open over the hero section. The chat panel greets visitors, keeps a clear-history button in its header, and counts down the 500-character limit. On mobile the same window goes full-screen.</em></p>
 
 ## 🛠️ Tech Stack
 
@@ -150,15 +156,21 @@ This regenerates the sprite, namespaces gradient ids so icons don't clash, hoist
 
 ## 🎨 Key Components
 
-- **TrueFocus**: Dynamic text animation cycling through focus areas
+- **TrueFocus**: Dynamic text animation cycling through focus areas (**Figures 1 and 3**)
 - **ShinyText**: Gradient text animation effect
-- **Connection**: Rotating social media links
+- **Connection**: Rotating social media links (**Figure 3**)
 - **EducationTimeline**: Interactive timeline with hover effects
 - **ContactForm**: Form with real-time validation and submission
 - **ChatBot / ChatWindow**: Chat launcher; the window (and its Markdown renderer) loads on first hover or tap
 - **HighlightList**: Experience highlights clamped with CSS `line-clamp` until "Show more" is pressed. The preview length is `highlightPreviewLines` in `experienceData.js`
 - **GlowingEffect**: Pointer-tracking border glow that only listens while its card is on screen
 - **ThemeToggle**: Animated sun/moon switch built with plain SVG and CSS
+
+<p align="center">
+  <img src="app/portfolio2.png" alt="Portfolio hero section with the TrueFocus line now highlighting Reasoning Models and the social link orbit rotated" width="850">
+</p>
+
+<p align="center"><em>Figure 3: TrueFocus a moment after Figure 1. The highlight has moved to "Reasoning Models" and blurred the other phrase, and the Connection orbit has rotated, so the hero never sits still.</em></p>
 
 ## 📊 Featured Projects
 
