@@ -62,6 +62,7 @@ export const chatMessages = {
   },
   errors: {
     network: "I hit a technical snag reaching the server. It may be waking up, so please try again in a moment.",
+    rateLimited: "Whoa, slow down! Please wait a minute before asking more questions.",
     timeout: "The server is taking too long to respond. It may be waking up, so please try again in a moment.",
     interrupted: "_The response was interrupted. Please ask again._",
     notConfigured: "The chat backend isn't configured. Set NEXT_PUBLIC_ASTARBOT_API_URL and restart the dev server."

@@ -212,6 +212,11 @@ export const useChatBot = () => {
         }),
         signal: controller.signal,
       });
+      if (res.status === 429) {
+        const body = await res.json().catch(() => null);
+        setMessages((prev) => [...prev, makeMessage("bot", body?.detail || chatMessages.errors.rateLimited)]);
+        return;
+      }
       if (!res.ok || !res.body) throw new Error(`AStarBot API returned ${res.status}`);
 
       const reader = res.body.getReader();
