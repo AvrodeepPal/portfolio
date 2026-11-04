@@ -33,7 +33,7 @@ const NavLinks = ({ isMobile = false, onLinkClick, activeSection, onNavClick }) 
   }
 
   return (
-    <ul className="nav-list hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 px-4 lg:px-6 xl:px-8 py-3 rounded-full
+    <ul className="nav-glass-links nav-list hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 px-4 lg:px-6 xl:px-8 py-3 rounded-full
                    bg-[rgba(255,215,0,0.15)] dark:bg-[rgba(255,255,255,0.1)] 
                    backdrop-blur-[10px] text-fg shadow-sm transition-all max-w-full overflow-hidden">
       {navLinks.map((link) => (

@@ -50,6 +50,9 @@ export default function EducationTimeline() {
               {item.details && (
                 <p className="text-sm text-fg/60">{item.details}</p>
               )}
+              {item.achievement && (
+                <p className="text-sm text-fg/60">{item.achievement}</p>
+              )}
             </motion.div>
           </motion.div>
         ))}

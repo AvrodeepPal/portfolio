@@ -2,12 +2,14 @@ export const educationData = [
   {
     title: "Masters in Computer Applications (MCA)",
     institution: "Jadavpur University, Kolkata",
-    details: "CGPA : 8.90 /10 (2024 - 2026)"
+    details: "CGPA : 8.90 /10 (2024 - 2026)",
+    achievement: "Placement Coordinator | WBJECA'24 GMR 2"
   },
   {
     title: "B.Sc. Computer Science Honours",
     institution: "Barrackpore Rastraguru Surendranath College (affiliated to West Bengal State University)",
-    details: "CGPA: 9.91 /10 (2021 - 2024)"
+    details: "CGPA: 9.91 /10 (2021 - 2024)",
+    achievement: "WBSU Rank 1"
   },
   {
     title: "St. Augustine's Day School, Barrackpore (ISC)",

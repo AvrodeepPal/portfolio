@@ -20,13 +20,20 @@ const rays = [
 const ThemeToggle = ({ checked, onChange, size = 24, color = 'currentColor' }) => {
   const maskId = `theme-toggle-mask-${useId()}`;
 
+  // Measured from the button rather than the pointer, so keyboard presses
+  // (which report clientX/Y as 0) also reveal from the icon.
+  const handleClick = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    onChange(!checked, { x: left + width / 2, y: top + height / 2 });
+  };
+
   return (
     <button
       type="button"
-      onClick={() => onChange(!checked)}
+      onClick={handleClick}
       aria-label={checked ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={checked}
-      className="flex cursor-pointer"
+      className="flex cursor-pointer rounded-full p-3"
       style={{ color }}
     >
       <svg

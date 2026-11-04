@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav className="w-full max-w-full overflow-x-hidden fixed px-3 xs:px-4 sm:px-6 lg:px-8 xl:px-10 py-2 flex items-center justify-between z-50">
       <a
         href={brandConfig.href}
-        className={`flex-shrink-0 min-w-0 max-w-[160px] xs:max-w-[180px] sm:max-w-[200px] flex justify-center p-2 rounded-full 
+        className={`nav-glass-brand flex-shrink-0 min-w-0 max-w-[160px] xs:max-w-[180px] sm:max-w-[200px] flex justify-center p-2 rounded-full
                     ${glassBackground.light} ${glassBackground.dark} 
                     backdrop-blur-[10px] shadow-sm transition-all 
                     ${glassBackground.hoverLight} ${glassBackground.hoverDark}`}
@@ -47,7 +47,7 @@ const Navbar = () => {
       />
       
       <div className="flex items-center gap-2 xs:gap-3 flex-shrink-0">
-        <div className={`flex items-center justify-center p-3 xs:p-3 rounded-full 
+        <div className={`nav-glass-toggle flex items-center justify-center rounded-full
                        ${glassBackground.light} ${glassBackground.dark} 
                        backdrop-blur-[10px] shadow-sm transition-all ${glassBackground.hoverLight} ${glassBackground.hoverDark}`}>
           <ThemeToggle
@@ -59,7 +59,7 @@ const Navbar = () => {
         </div>
 
         <div className="block md:hidden z-70">
-            <div className={`menu-button rounded-full -p-[10px] flex items-center justify-center
+            <div className={`nav-glass-menu menu-button rounded-full -p-[10px] flex items-center justify-center
                             ${glassBackground.light} ${glassBackground.dark} 
                             backdrop-blur-[10px] shadow-sm hover:bg-[rgba(255,215,0,0.3)] ${glassBackground.hoverDark} 
                             transition-all`}>

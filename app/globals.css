@@ -35,6 +35,80 @@
   --working: #4ade80;
 }
 
+/* Theme reveal: drop the default cross-fade so ThemeProvider can grow the new
+   theme over the old one with a clip-path. The new snapshot already paints on top. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Navbar glass during the reveal. Safari drops backdrop-filter from page snapshots,
+   so each pill gets its own layer and the blur moves onto that layer, where it
+   keeps working over the wave passing underneath. */
+.nav-glass-toggle { view-transition-name: nav-toggle; }
+.nav-glass-menu { view-transition-name: nav-menu; }
+.nav-glass-links { view-transition-name: nav-links; }
+.nav-glass-brand { view-transition-name: nav-brand; }
+
+::view-transition-group(nav-toggle),
+::view-transition-group(nav-menu),
+::view-transition-group(nav-links),
+::view-transition-group(nav-brand) {
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+}
+
+/* Each pill changes theme roughly as the wave reaches it, moving out from the toggle.
+   The toggle shows only its live state so the sun/moon morph isn't doubled up. */
+::view-transition-old(nav-toggle) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-new(nav-toggle) {
+  animation: none;
+}
+
+::view-transition-old(nav-menu),
+::view-transition-new(nav-menu) {
+  animation-duration: 150ms;
+}
+
+::view-transition-old(nav-links),
+::view-transition-new(nav-links) {
+  animation-delay: 120ms;
+  animation-duration: 240ms;
+}
+
+::view-transition-old(nav-brand),
+::view-transition-new(nav-brand) {
+  animation-delay: 360ms;
+  animation-duration: 150ms;
+}
+
+/* On phones the logo sits much closer to the toggle. */
+@media (max-width: 767px) {
+  ::view-transition-old(nav-brand),
+  ::view-transition-new(nav-brand) {
+    animation-delay: 120ms;
+    animation-duration: 200ms;
+  }
+}
+
+/* The page can't be hovered during a transition, so the toggle would lose its hover
+   tint and regain it at the end. Hold the tint instead (same values as
+   glassBackground in navbarData.js), unless the toggle was used from the keyboard. */
+@media (hover: hover) {
+  .theme-revealing .nav-glass-toggle:not(:has(:focus-visible)) {
+    background-color: rgba(255, 215, 0, 0.25);
+  }
+
+  .theme-revealing.dark .nav-glass-toggle:not(:has(:focus-visible)) {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
 /* Apply Poppins as default font */
 body {
   font-family: var(--font-poppins, 'Poppins', system-ui, -apple-system, sans-serif);

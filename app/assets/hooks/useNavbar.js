@@ -4,7 +4,7 @@ export const useNavbar = (isDark, setDark) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const toggleDarkMode = (checked) => setDark(checked);
+  const toggleDarkMode = (checked, origin) => setDark(checked, origin);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
