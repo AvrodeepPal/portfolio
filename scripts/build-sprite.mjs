@@ -45,7 +45,12 @@ const toSymbol = (id, file) => {
       return '';
     })
     .replace(/<defs>\s*<\/defs>|<defs\/>/g, '');
-  return { defs: defs.join(''), symbol: `<symbol id="${id}" viewBox="${viewBox}">${inner.trim()}</symbol>` };
+  // The root <svg> is dropped, so single-colour icons would lose their theme-following
+  // fill and their cut-outs. Carry those attributes over to the symbol.
+  const paint = /\sfill="currentColor"/.test(open[1])
+    ? [...open[1].matchAll(/\s(?:fill|fill-rule)="[^"]*"/g)].map((m) => m[0]).join('')
+    : '';
+  return { defs: defs.join(''), symbol: `<symbol id="${id}" viewBox="${viewBox}"${paint}>${inner.trim()}</symbol>` };
 };
 
 const parts = Object.entries(icons).map(([id, file]) => toSymbol(id, file));

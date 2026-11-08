@@ -18,7 +18,7 @@ import { companyLogos } from '@/app/assets/experience/assets';
  *    location     city, country (the `type` is appended when displayed)
  *    duration     { start, end, label }  — use end: 'Present' for current role
  *    technologies string[] — rendered as chips
- *    highlights   [{ title, description }] — description supports **bold** spans.
+ *    highlights   [{ title, description }] — max 4 per role. Supports **bold** spans.
  *                 Each point is clamped to `highlightPreviewLines` lines until
  *                 "Show more" is clicked, so lead with the key result.
  * ─────────────────────────────────────────────────────────────────────────────
@@ -43,29 +43,29 @@ export const experiences = [
       label: 'Jan 2026 - Jun 2026'
     },
     technologies: [
-      'Python', 'FastAPI', 'Docker', 'JavaScript', 'Nginx',
-      'SQLite', 'LLM', 'GenAI', 'Agentic AI', 'OWASP', 'VectorDB'
+      'Python', 'FastAPI', 'Docker', 'Nginx', 'JavaScript', 'SQLite',
+      'PyTorch', 'Hugging Face Transformers', 'VectorDB', 'LLM', 'OWASP', 'Agentic AI'
     ],
     highlights: [
       {
-        title: 'Code Checker (Security Analysis)',
+        title: 'File Transfer Architecture Redesign',
         description:
-          "Built a **static analysis + LLM-based engine** for detecting **SQL injection, RCE, and XSS** vulnerabilities with intent-aware parsing and obfuscation handling. The engine performs deterministic static checks first, then feeds flagged code to an LLM for contextual analysis, producing human-readable security explanations with fix suggestions. Designed to serve both technical developers needing precise vulnerability details and non-technical users requiring plain-English guidance."
+          "Achieved a **470x reduction in gateway RAM** on large uploads (1,225MB to 2.6MB for a 300MB file) by overhauling the pipeline with **streaming multipart handling** and temp-file spooling with integrity verification. Built frontend concurrency controls and cache batching that took a 200-file operation from **200 storage writes to 1**, eliminating freezes during multi-file operations. Moved blocking sync work off the event loop with **thread pooling**, so large repository syncs no longer stall the server."
       },
       {
-        title: 'VectorDB Service Development',
+        title: 'Medical AI Ensemble & Hardware Benchmarking',
         description:
-          "Designed and built an end-to-end **RAG backend** covering document ingestion, embedding generation, **HNSW indexing**, and low-latency semantic search. The service supports **5 embedding models** with auto-configuration of dimensions, context sizes, and distance metrics based on data type. Implemented token-aware chunking, model-specific prefixes, and intelligent recommendations for chunk size and indexing profiles. Achieved **0.93 similarity score** on technical documents and reduced RAG implementation complexity for non-technical users."
+          "Built a multi-modal ensemble reaching **84% accuracy** on skin lesion classification from 39,231 cleaned images, beating a fine-tuned **400M-parameter** foundation model by 2.8 points, and deployed it on the platform. Designed a hardware benchmarking framework across **18 vision and text models**, measuring CPU-to-GPU speedups of 9x to **327x** and documenting the conditions each figure holds under. Set up **vision, ASR, and TTS** models on server GPUs as multi-modal use cases."
       },
       {
-        title: 'Custom Workflow Development (Multi-Domain)',
+        title: 'RAG Backend, Code Checker & Microservices',
         description:
-          "Developed production-ready workflows with custom nodes across **6+ domains** - legal, financial, credit, medical, and conversational AI - each with documentation and tutorial videos. Built the **Legal Helper** (dual vector DB retrieval for case analysis), **Finance Helper** (bank report analysis with 12 query types), **Card Recommendation** (two-stage filtering of 80+ cards), and **Credit Health** (scorecard-based assessment). These workflows showcase the platform's competitive advantage: local model access without API restrictions."
+          "Built an end-to-end **RAG backend** covering ingestion, **5 embedding models**, token-aware chunking and **HNSW** semantic search, reaching a **0.93 similarity score** in a directional test on a technical document. Built a **static analysis + LLM engine** that detects **SQL injection, RCE, and XSS** with intent-aware parsing and plain-English explanations. Worked on **Dockerized FastAPI microservices** with role-based access control and a layered request pipeline."
       },
       {
-        title: 'Microservices Architecture & Deployment',
+        title: 'Workflow Platform & Quality Ownership',
         description:
-          "Architected **Dockerized microservices** using **FastAPI** with **role-based access control**, enabling secure and scalable production usage. Implemented a layered request pipeline with middleware validation and session authentication, followed by a unified gateway protocol translating frontend commands into backend domain models. Integrated **Nginx** as reverse proxy with proper error relay, maintaining backend infrastructure with testing across both frontend and backend services."
+          "Shipped publicly documented workflows across **6+ domains**, including **Legal Helper**, **Finance Helper** with 12 analysis types, and **Card Recommendation** across 80+ cards. Led the upgrade from custom-only nodes to a **reusable workflow system** built from generic building blocks, making new workflows much quicker to build and opening them to non-technical users. Own the alpha testers' **regression suite**, run after every frontend or backend push."
       }
     ]
   },
@@ -88,29 +88,29 @@ export const experiences = [
       label: 'Jul 2026 - Present'
     },
     technologies: [
-      'Python', 'FastAPI', 'Docker', 'PostgreSQL', 'AWS', 'CUDA',
-      'PyTorch', 'Hugging Face Transformers', 'VectorDB', 'Agentic Workflows'
+      'Python', 'vLLM', 'PyTorch', 'CUDA', 'NCCL', 'DeepSeek', 'Diffusers',
+      'Hugging Face Transformers', 'FastAPI', 'Docker', 'PostgreSQL', 'AWS', 'Bash', 'SSH'
     ],
     highlights: [
       {
-        title: 'Security & Infrastructure Hardening',
+        title: 'LLM Serving & vLLM Migration',
         description:
-          "Led security audits across a large-scale Python codebase, identifying and fixing critical **path traversal** and error handling vulnerabilities that affected all worker hosts. Redesigned the error relay system to return proper **HTTP status codes**, restoring monitoring accuracy and retry logic across the platform. Resolved production configuration drift where workers ran stale AI engine code, implementing **self-healing deployment scripts** and restoring metrics flow into usage records with **80+ regression assertions**."
+          "Delivered **~17x LLM throughput** on staging by migrating serving to **vLLM**, after a controlled benchmark of **7 serving setups** showed the serving software, not the GPU, was the bottleneck: 100 mixed requests dropped from 213s to 12.6s. **64 concurrent streams** now finish in 2.2s where the old server froze past 40, with GPU memory budgeting enforced before any deploy and **59 of 59 live checks** passing. The benchmark also surfaced **8 platform bugs**, all fixed, and produced 13 ranked recommendations for leadership."
       },
       {
-        title: 'File Transfer Architecture Redesign',
+        title: 'DeepSeek V4 Flash Bring-Up',
         description:
-          "Overhauled the upload/download pipeline to eliminate browser hangs and memory spikes, achieving **470x reduction in RAM usage** for large file uploads through **streaming multipart handling** and temp-file spooling with integrity verification. Built frontend concurrency controls and cache batching that reduced localStorage operations by **200x**, eliminating platform freezes during multi-file operations. Implemented **async thread pooling** for git operations, enabling large repository syncs without blocking the event loop."
+          "Scored **92.5/93** on a **10-phase acceptance suite** across ~20,500 requests while bringing up a large mixture-of-experts model on staging with **tensor and expert parallelism**, extending the platform to manage multi-GPU replicas, backed by **463 unit tests**. Recalled **48 of 48** planted facts in contexts up to ~260K tokens, handled 100 simultaneous calls in 18.25s, ran a 30-minute soak with zero restarts, and recovered from a killed GPU process on its own in 88s. Deploys dropped from an 8-minute reload to 3.6 minutes with the model left running."
       },
       {
-        title: 'AI Model Benchmarking & Deployment',
+        title: 'Security, Reliability & Deployment',
         description:
-          'Designed and executed a hardware benchmarking framework evaluating **15+ vision and text models** across laptop, cloud GPU, and server-grade hardware, documenting speedup factors up to **325x** across 15 configurations. Set up and fine-tuned architectures for **vision, ASR, and TTS** models on server GPUs, building an ensemble of compact models that achieved **84% accuracy** on skin lesion classification - benchmarked against a **400M-parameter** foundation model that it outperformed by 1.5 points. Deployed these as multi-modal use cases directly on the platform.'
+          "Audited a **~114,000-line Python platform** by tracing request paths end to end, then mapped failure modes across core subsystems, delivering ranked findings and phased fix plans for leadership. Hardened input and file handling with **80+ regression assertions** and restored correct **HTTP status codes** so monitoring and retries work as intended. Reworked deployment tooling across **100+ files**, removing **~573 duplicate lines**, verified by **32 offline tests** and parity across **123 commands**; now in validation ahead of rollout."
       },
       {
-        title: 'Generic Workflow Architecture',
+        title: 'Image-to-Video Optimisation & GPU Debugging',
         description:
-          'Led the upgrade from custom-only nodes to a **reusable workflow system** capable of recreating domain-specific solutions (legal, financial, credit, medical) using generic building blocks - **vector DB retrieval**, **LLM generation**, and dropdown-driven prompt builders. Demonstrated this by rebuilding the Legal Helper workflow with generic nodes, reducing new workflow development time by **50%** while expanding no-code accessibility for non-technical users. Created documentation and tutorials showcasing local model access without API restrictions.'
+          "Sped up image-to-video generation **~3.5x** (398.7s to ~115s) by stacking and measuring each optimisation, including **FP8** and **torch.compile**. Traced broken multi-GPU output to **silent data corruption** in direct GPU-to-GPU copies, reproduced with no model loaded (40 of 40 transfers corrupt, 0 of 40 through host memory), then fixed it by routing copies through the CPU. Also diagnosed thermal throttling and handed it to the hardware team with evidence."
       }
     ]
   }

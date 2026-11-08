@@ -1,5 +1,5 @@
 'use client';
-import { coding, aiml, llmrag, infra, webdev, dataTools, platforms } from '@/app/assets/skills/assets';
+import { coding, aiml, llmServing, aiTooling, backend, data, cloudOps, webIdes } from '@/app/assets/skills/assets';
 import React from 'react';
 import Tile from './Tile';
 import SkillSprite from './SkillSprite';
@@ -31,13 +31,14 @@ const slideInLeft = {
 
 export default function Skills() {
   const skillSections = [
-    { title: "Coding:", skills: coding },
+    { title: "Languages:", skills: coding },
     { title: "AI & ML:", skills: aiml },
-    { title: "LLM & RAG:", skills: llmrag },
-    { title: "Infra:", skills: infra },
-    { title: "Web Dev:", skills: webdev },
-    { title: "Data & Tools:", skills: dataTools },
-    { title: "Platforms:", skills: platforms }
+    { title: "LLM Serving:", skills: llmServing },
+    { title: "AI Tooling:", skills: aiTooling },
+    { title: "Backend:", skills: backend },
+    { title: "Data:", skills: data },
+    { title: "Cloud & Ops:", skills: cloudOps },
+    { title: "Web & IDEs:", skills: webIdes }
   ];
 
   return (

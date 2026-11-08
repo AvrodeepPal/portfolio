@@ -1,0 +1,3 @@
+SQL Basic: https://www.hackerrank.com/certificates/iframe/29b564efe824
+SQL Intermediate: https://www.hackerrank.com/certificates/iframe/75a75bfc130f
+SQL Advanced: https://www.hackerrank.com/certificates/iframe/5bfe00fc485a

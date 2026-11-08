@@ -20,7 +20,7 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 - 🎓 WBSU Rank 1 in Bachelor's (CGPA: 9.91/10.0)
 - 🏆 2nd Rank in WB-JECA 2024 (State-level MCA entrance)
 - ⭐ 5 Star Problem Solver on HackerRank
-- 💡 3 Major Projects with 90%+ User Satisfaction
+- ⚡ ~17x LLM serving throughput on staging after migrating to vLLM
 
 ## ✨ Features
 
@@ -59,12 +59,14 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 ## 🏗️ Project Structure
 
 ```
+portfolio/
 ├── app/
 │   ├── layout.js          # Root layout, fonts, pre-paint theme script, Vercel Analytics + Speed Insights
 │   ├── page.js            # Home page (server component)
 │   ├── globals.css        # Theme variables, Tailwind, CSS animations
 │   ├── components/
 │   │   ├── ThemeProvider.jsx  # Dark/light theme state shared via context
+│   │   ├── Footer.jsx     # Site footer with theme-aware social links
 │   │   ├── navbar/        # Navbar, mobile menu, theme toggle
 │   │   ├── hero/          # Hero section, TrueFocus, ShinyText, spotlight
 │   │   ├── experience/    # Work timeline and cards (collapsible highlights)
@@ -75,12 +77,22 @@ I'm Avrodeep Pal, an SDE at GenAIus Technology and an MCA graduate of Jadavpur U
 │   │   ├── chatbot/       # AStarBot launcher and lazy-loaded chat window
 │   │   └── ui/            # Shared effects (GlowingEffect)
 │   └── assets/
-│       ├── data/          # Section content and config
-│       ├── hooks/         # Custom React hooks (chat, navbar, contact form)
-│       └── */             # Images (WebP) and icons (SVG) per section, imported statically
+│       ├── certificates/  # Kaggle certificate images and HackerRank links
+│       ├── connect/       # Social links and icons for hero orbit
+│       ├── data/          # Section content and config data
+│       ├── experience/    # Company branding and logos (light/dark WebP)
+│       ├── home/          # Profile photo and UI/contact icons
+│       ├── hooks/         # Custom React hooks (auto-scroll, chat, navbar, contact form)
+│       ├── projects/      # Project preview screenshots (WebP)
+│       └── skills/        # Skill assets, sprite config (icons.mjs), and raw source icons (svg/)
 ├── public/                # Public assets, incl. generated skills-sprite.svg
 ├── scripts/               # build-sprite.mjs: packs skill icons into the sprite
 ├── next.config.mjs        # Image formats (AVIF/WebP) and cache TTL
+├── tailwind.config.js     # Tailwind CSS configuration
+├── postcss.config.mjs     # PostCSS configuration
+├── eslint.config.mjs      # ESLint configuration
+├── jsconfig.json          # JavaScript module aliases (@/*)
+├── package.json           # Dependencies and npm scripts
 └── README.md
 ```
 
@@ -136,18 +148,18 @@ All images are bundled with the app as static imports, so they are served from V
 
 ### Skill icon sprite
 
-The Skills section draws its ~47 icons from one sprite (`public/skills-sprite.svg`), so it costs one cached request instead of one per icon. `SkillSprite.jsx` fetches the file and inlines it into the page, and tiles reference symbols with `<use href="#id">`. Referencing the file directly (`sprite.svg#id`) breaks gradient icons in Safari. The icon list lives in `app/assets/skills/icons.mjs`. After adding or changing an icon, run:
+The Skills section draws its ~60 icons from one sprite (`public/skills-sprite.svg`), so it costs one cached request instead of one per icon. `SkillSprite.jsx` fetches the file and inlines it into the page, and tiles reference symbols with `<use href="#id">`. Referencing the file directly (`sprite.svg#id`) breaks gradient icons in Safari. The source SVGs live in `app/assets/skills/svg/`, and the list of icons actually used lives in `app/assets/skills/icons.mjs`, so unused files in the folder add nothing to the sprite. After adding or changing an icon, run:
 
 ```bash
 npm run sprite
 ```
 
-This regenerates the sprite, namespaces gradient ids so icons don't clash, hoists gradients/masks/filters into a shared `<defs>` (Safari needs this), and updates `app/assets/skills/sprite-version.js` (a content hash used as a cache-buster). Then reference the new icon id from `app/assets/skills/assets.js`. Commit the generated files.
+This regenerates the sprite, namespaces gradient ids so icons don't clash, hoists gradients/masks/filters into a shared `<defs>` (Safari needs this), keeps `fill="currentColor"` from an icon's root so single-colour icons follow the theme, and updates `app/assets/skills/sprite-version.js` (a content hash used as a cache-buster). Then reference the new icon id from `app/assets/skills/assets.js`. Commit the generated files.
 
 ## 📱 Sections
 
 - **Hero**: Dynamic introduction with animated text and social links
-- **Experience**: Work timeline with tech stack and role highlights. Every highlight shows its headline and first two lines, and "Show more" expands the full text
+- **Experience**: Work timeline with tech stack and up to four highlights per role. Every highlight shows its headline and first two lines, and "Show more" expands the full text
 - **Skills**: Technical skills organized by categories
 - **Projects**: Showcase of major projects with live demos
 - **About**: Personal introduction with education timeline
@@ -165,6 +177,7 @@ This regenerates the sprite, namespaces gradient ids so icons don't clash, hoist
 - **HighlightList**: Experience highlights clamped with CSS `line-clamp` until "Show more" is pressed. The preview length is `highlightPreviewLines` in `experienceData.js`
 - **GlowingEffect**: Pointer-tracking border glow that only listens while its card is on screen
 - **ThemeToggle**: Animated sun/moon switch built with plain SVG and CSS
+- **Footer**: Responsive footer with theme-aware social icons and copyright
 
 <p align="center">
   <img src="app/portfolio2.png" alt="Portfolio hero section with the TrueFocus line now highlighting Reasoning Models and the social link orbit rotated" width="850">
