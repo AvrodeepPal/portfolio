@@ -13,6 +13,13 @@ export const chatBotConfig = {
       height: "h-[650px]",
       maxHeight: "max-h-[calc(100vh-120px)]"
     },
+    // Desktop-only "maximize": fills the viewport with a 1rem margin, like WhatsApp Web.
+    maximized: {
+      position: "bottom-4 right-4",
+      size: "w-[calc(100vw-2rem)] h-[calc(100dvh-2rem)] max-h-[calc(100dvh-2rem)]",
+      gutter: "px-[6%]",
+      bubble: "max-w-[min(70%,52rem)]"
+    },
     mobile: {
       breakpoint: 768,
       textareaMaxHeight: 100
@@ -165,6 +172,8 @@ export const accessibilityLabels = {
   },
   actions: {
     clear: "Clear chat history",
+    maximize: "Maximize chat window",
+    restore: "Restore chat window size",
     close: "Close AStarBot chat"
   }
 };

@@ -24,7 +24,7 @@ const markdownComponents = {
   code: ({ node, ...props }) => <code {...props} className="px-1 py-0.5 rounded bg-black/10 text-[0.85em]" />,
 };
 
-export default function ChatMessage({ sender, content, timestamp, isDark = false, isMobile = false }) {
+export default function ChatMessage({ sender, content, timestamp, isDark = false, isMobile = false, isMaximized = false }) {
   const { showTimestamp, formatTime, toggleTimestamp } = useChatMessage();
   
   const isUser = sender === "user";
@@ -37,7 +37,7 @@ export default function ChatMessage({ sender, content, timestamp, isDark = false
     >
       <div
         className={`
-          ${isMobile ? 'max-w-[85%]' : 'max-w-[350px]'} px-4 py-3 rounded-2xl ${chatStyles.animations.message}
+          ${isMobile ? 'max-w-[85%]' : isMaximized ? chatBotConfig.dimensions.maximized.bubble : 'max-w-[350px]'} px-4 py-3 rounded-2xl ${chatStyles.animations.message}
           ${isUser
             ? `${chatStyles.backgrounds.light.message.user} ${chatStyles.text.light.primary} rounded-br-sm shadow-md hover:shadow-lg`
             : `rounded-bl-sm ${chatStyles.borders.message.bot} shadow-sm ${
